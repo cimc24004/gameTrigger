@@ -6,25 +6,29 @@ class Game < ApplicationRecord
     after_update_commit :image_update_to_google_drive
     after_destroy_commit :image_destroy_to_google_drive
     def image_upload_to_google_drive
-        session = session_get()
-        if Rails.env.development?
-            upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                               .file_by_title("GameDevelopmentImage")
-            
-        else
-            upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                            .file_by_title("GameProductionImage")
+        if image.present?
+            session = session_get()
+            if Rails.env.development?
+                upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                                .file_by_title("GameDevelopmentImage")
+                
+            else
+                upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                                .file_by_title("GameProductionImage")
+            end
+            file_name = image.file.original_filename
+            file_ext = File.extname(file_name) #拡張子を取得
+            file_find = upload_to_folder.upload_from_file(image.current_path, "game-event-image-#{id}-image#{file_ext}", convert: false)
+            update(google_file_id: file_find.id, google_file_url: "https://drive.google.com/uc?id=#{file_find.id}")
         end
-        file_name = image.file.original_filename
-        file_ext = File.extname(file_name) #拡張子を取得
-        file_find = upload_to_folder.upload_from_file(image.current_path, "game-event-image-#{id}-image#{file_ext}", convert: false)
-        update(google_file_id: file_find.id, google_file_url: "https://drive.google.com/uc?id=#{file_find.id}")
     end
 
     def image_update_to_google_drive
-        session = session_get()
-        target_file = session.file_by_id(google_file_id)
-        target_file.update_from_file(image.current_path)
+        if image.present?
+            session = session_get()
+            target_file = session.file_by_id(google_file_id)
+            target_file.update_from_file(image.current_path)
+        end
     end
     
     def image_destroy_to_google_drive
