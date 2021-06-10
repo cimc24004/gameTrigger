@@ -1,0 +1,28 @@
+<table class="game-event-table">
+    <tr class="game-event-list-tr">
+        <td class="game-title-td start">ゲームタイトル</td>
+        <td class="game-event-title-td">大会タイトル</td>
+        <td class="game-date-td">開催日</td>
+        <td class="game-detail-td end">主催者</td>
+    </tr>
+</table>
+<div class="game_events_box">
+    <% @game_events.each do |game_event| %>
+        <table class="game-event-table-desc">
+            <tr class="game-event-list-tr record">
+                <td class="game-title-td start"><%= game_event.game.title %></td>
+                <td class="game-event-title-td"><%= link_to game_event.title.truncate(28), game_event_path(game_id: game_event.game.id, id: game_event.id) %></td>
+                <td class="game-date-td">
+                    <% if game_event.event_date.present? %>
+                        <%= game_event.event_date.to_s %>
+                    <% else %>
+                        未定
+                    <% end %>
+                </td>
+                <td class="game-detail-td end">
+                    <%= game_event.event_master.truncate(8) %>
+                </td>
+            </tr>
+        </table>
+    <% end %>
+</div>

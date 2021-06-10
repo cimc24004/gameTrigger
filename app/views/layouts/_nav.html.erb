@@ -1,0 +1,68 @@
+<nav class="desktop-nav pc-dis">
+    <% if user_signed_in? %>
+        <%= link_to user_path(current_user), class: "top-link" do %>
+            <li class="nav-li">
+                <%= image_tag "mypage_icon.png", class: "nav-icon-image" %>
+                <p class="nav-text">マイページ</p>
+            </li>
+        <% end %>
+        <%= link_to destroy_user_session_path, class: "top-link end", method: :delete do %>
+            <li class="nav-li">
+                <%= image_tag "logout_icon.png", class: "nav-icon-image" %>
+                <p class="nav-text">ログアウト</p>
+            </li>
+        <% end %>
+    <% else %>
+        <%= link_to new_user_session_path, class: "top-link" do %>
+            <li class="nav-li">
+                <%= image_tag "login_icon.png", class: "nav-icon-image" %>
+                <p class="nav-text">ログイン</p>
+            </li>
+        <% end %>
+        <%= link_to new_user_registration_path, class: "top-link end" do %>
+            <li class="nav-li end">
+            <%= image_tag "user_account_new.png", class: "nav-icon-image" %>
+                <p class="nav-text">新規登録</p>
+            </li>
+        <% end %>
+    <% end %>
+</nav>
+<nav class="smartphone-nav smart-dis">
+
+    <div class="smartphone-menu-button">
+        <div class="smartphone-menu-button-into-box">
+        </div>
+        <%= image_tag "menu.png", class: "menu-image" %>
+    </div>
+
+    <div class="smartphone-menu-box">
+        <%= link_to root_path, class: "top-link" do %>
+            <div class="smartphone-menu-one-box">
+                <h2>TOP</h2>
+            </div>
+        <% end %>
+        <% if user_signed_in? %>
+            <%= link_to user_path(current_user), class: "top-link" do %>
+                <div class="smartphone-menu-one-box">
+                    <h2>マイページ</h2>
+                </div>
+            <% end %>
+            <%= link_to destroy_user_session_path,method: :delete, class: "top-link" do %>
+                <div class="smartphone-menu-one-box">
+                    <h2>ログアウト</h2>
+                </div>
+            <% end %>
+        <% else %>
+            <%= link_to new_user_session_path, class: "top-link" do %>
+                <div class="smartphone-menu-one-box">
+                    <h2>ログイン</h2>
+                </div>
+            <% end %>
+            <%= link_to new_user_registration_path, class: "top-link end" do %>
+                <div class="smartphone-menu-one-box">
+                    <h2>新規登録</h2>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</nav>

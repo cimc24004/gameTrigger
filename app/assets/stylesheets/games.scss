@@ -1,0 +1,117 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.game_show_image{
+    max-height: 150px;
+    min-width: 300px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.game-sentence-box{
+    padding: 10px;
+}
+.game-index-game_events_box{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.more-append-game-events-box{
+    margin: 0 0 0 auto;
+    max-width: 100px;
+    padding-right: 20px;
+    
+}
+#game_id{
+    width: 50%;
+
+}
+.more-append-game-events-box a{
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+.more-append-game-events-link-into-box{
+    border: 1px solid rgb(121, 121, 121);
+    padding: 7px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.game-event-new-button-into-box{
+    border: 1px solid rgb(128, 128, 128);
+    padding: 12px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #609FD7; 
+    box-shadow: 1px 1px 3px #404040; 
+}
+.game-event-new-button-into-box h3{
+    font-size: 18px;
+}
+.game-event-new-button-into-box:hover{
+    opacity: 0.8;
+}
+.game_title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000;
+    text-decoration: none; 
+}
+.game-box{
+    background-color: #fff;
+}
+.game-box a{
+    text-decoration: none;
+
+
+}
+.games-all-box{
+    display: flex;
+    justify-content: space-between;    
+    flex-wrap: wrap;
+}
+.game_event_show_box{
+    word-break: break-all;
+}
+.game-box{
+    max-width: 300px;
+    margin: 10px;
+}
+.game_show_image.show{
+    max-height: 30em;
+}
+.game_image_show_box{
+    display: flex;
+    justify-content: center;
+}
+.game_image_show_go{
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+.game-show-box{
+    margin: 5px;
+}
+@media screen and (max-width: 900px){
+    .games-all-box{
+        justify-content: center;
+    }
+    .game_image_show_go{
+    }
+    .more-append-game-events-box{
+        padding-right: 0;
+    }
+    .more-append-game-events-box{
+        max-width: 80px;
+    }
+    .more-append-game-events-link-into-box{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .game_show_image{
+        width: 100%;
+        min-width: 0;
+    }
+}

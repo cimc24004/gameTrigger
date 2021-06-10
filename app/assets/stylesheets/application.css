@@ -1,0 +1,273 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require easy-autocomplete
+
+ */
+
+.space-box{
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 10px;
+    padding-top: 70px; 
+}
+html body .hidden{
+    display: none;
+}
+.text-decoration-none{
+    text-decoration: none;
+}
+button,input[type="submit"],input[type="button"],submit{
+    cursor: pointer;
+}
+.fr-box{
+    z-index: 0;
+}
+.button-hover{
+    cursor: pointer;
+}
+.submit-form{
+    padding: 5px 20px; 
+    background-color: #609FD7;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0 0 0 auto;
+ }
+.submit-form:hover{
+    opacity: 0.8; 
+}
+.submit-field{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 50px;
+}
+.header-top-box{
+    position: fixed;
+    width: 100%;
+    /* padding: 10px; */
+    /* padding-bottom: 20px; */
+    background-color: rgb(77, 77, 77);
+    z-index: 10;
+}
+.blue-button{
+    background-color: rgb(57, 106, 143);
+    color: #fff; 
+    border-style: none;
+    padding: 7px;
+    box-shadow: 1px 1px 3px rgb(121, 121, 121);
+}
+.blue-button:hover{
+    opacity: 0.8;
+}
+.top-text-link{
+    text-decoration: none;
+    color: #fff;
+}
+.top-text{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+.desktop-nav a{
+    text-decoration: none;
+    color: #fff;
+}
+.desktop-nav.pc-dis{
+    display: flex;
+}
+.nav-li{
+    position: relative;
+    transition: 0.3s background-color ease;
+    height: 100%;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.desktop-nav a{
+    margin-right: 20px;
+}
+.top-link.end{
+    margin-right: 0;
+}
+.top-link{
+    margin-right: 20px;
+}
+.nav-icon-image{
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 2px;
+}
+.nav-text{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.nav-li:hover{
+    background-color: rgb(57, 57, 57);
+}
+.nav-li.end{
+    margin-right: 0;
+}
+.desktop-nav{
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+.desktop-nav{
+    display: flex;
+    margin-right: 40px;
+}
+nav li{
+    list-style: none;
+}
+body{
+    background-color: #efefef;
+}
+input[type="submit"]{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+html{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+input, select, textarea,submit,button{
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* 垂直方向のマージンを統一 */
+ 
+ h1 {
+     font-size: 2em;
+     font-weight: bold;
+}
+ 
+ h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+ h3 {
+     font-size: 1.17em;
+    font-weight: bold;
+
+}
+h4, h5,h6{
+    font-size: 1em;
+    font-weight: bold; 
+}
+
+.smartphone-menu-button{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 2px;
+    right: 30px;
+    transition: 0.5s ease right;
+    z-index: 5;
+    cursor: pointer;
+}
+.smartphone-menu-box{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 65vw;
+    background-color: #ffffff;
+    color: #000; 
+    z-index: 100;
+    transition: 0.5s ease right;
+}
+.smartphone-menu-one-box{
+    padding: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(114, 114, 114);
+    color: #000;
+}
+.smartphone-menu-box > :first-child .smartphone-menu-one-box{
+    padding-top: 30px;
+}
+.background-modal-menu-click-box{
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    display: none;
+}
+.header-top-box.dis::before{
+    background-color: rgba(0,0,0,0.5);
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.background-modal-menu-click-box.dis{
+    display: block;
+}
+.menu-image{
+    position: relative;
+}
+.smartphone-menu-button.dis{
+    right: 68vw;
+}
+.smartphone-menu-box a{
+    text-decoration: none;
+}
+.smartphone-menu-box.dis{
+    right: 0;
+}
+.smartphone-menu-button-into-box{
+    width: 80%;
+    height: 70%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+}
+.menu-image{
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+.pc-dis{
+    display: block;
+}
+.smart-dis{
+    display: none;
+}
+@media screen and (max-width: 500px){
+    .smart-dis{
+        display: block;
+    }
+    .pc-dis{
+        display: none;
+    }
+    .desktop-nav.pc-dis{
+        display: none;
+    }
+}

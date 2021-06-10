@@ -1,0 +1,33 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-record-box{
+    margin-top: 50px;
+}
+
+.search-form-box{
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.game-event-search-text{
+    text-align: center;
+}
+.keywards_search{
+    width: 100%;
+    height: 25px;
+}
+.search-submit{
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #44984c;
+    color: #fff;
+    border-style: none;
+    border: 1px solid rgb(75, 75, 75);
+}
+.search-submit:hover{
+    background-color: #438a49;
+}

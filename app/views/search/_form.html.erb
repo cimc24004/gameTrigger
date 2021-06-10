@@ -1,0 +1,9 @@
+<%= form_with local: true, url: url, method: :get do |f| %>
+    <div class="search-form-box">
+        <% if defined? object %>
+            <%= f.collection_select :game_id, object, :id, :title, selected: default_value %>
+        <% end %>
+        <%= f.text_field :keywards, value: params[:keywards], class: "keywards_search" %>
+        <%= f.submit "検索", class: "search-submit" %>
+    </div>
+<% end %>

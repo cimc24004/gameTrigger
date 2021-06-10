@@ -1,0 +1,138 @@
+<% unless defined?(url) %>
+    <% #もしurlがローカル変数に定義されてなかったらgame_event_pathにしておく。 %>
+    <% url = game_game_events_path(game_id: @game.id) %>
+<% else %>
+    <% url = url %>
+<% end %>
+<div class="game_event_new_box">
+    <% unless defined?(edit_mode) %>
+        <div class="game_event_show_title_box">
+            <h1 class="game_event_show_title"><%= @game.title %>の大会情報を登録</h1>
+        </div>
+    <% else %>
+        <div class="game_event_show_title_box">
+            <h1 class="game_event_show_title"><%= @game_event.title %>を編集</h1>
+        </div>
+    <% end %>
+    <%= form_with model: @game_event,url: url, local: true, class: "form",multipart: true do |f| %>
+        <div class="field">
+            <%= f.label "" do %>
+                ゲーム大会名
+                <span class="important-text">(必須)</span>
+            <% end %>
+            <%= f.text_field :title %>
+        </div>
+        <div class="field">
+            <%= f.label "ゲーム大会内容" %>
+            <%= f.text_area :body, id: "game_event_body" %>
+        </div>
+        <div class="field">
+            <% if defined?(edit_mode) %>
+                <div class="edit-image-button-box hidden">
+                    <%= f.label "画像" %><br>
+                    <span id="image-select-button" class="button-hover">
+                        <%= image_tag "image-upload-icon.png", class: "image-select-upload" %>
+                        画像を選択
+                    </span>
+                </div>
+
+            <% else %>
+                <div class="edit-image-button-box">
+                    <%= f.label "画像" %><br>
+                    <span id="image-select-button" class="button-hover">
+                        <%= image_tag "image-upload-icon.png", class: "image-select-upload" %>
+                        画像を選択
+                    </span>
+                </div>
+            <% end %>
+            <div class="show-images-box hover-event hidden">
+                <% if defined?(edit_mode) %>
+                    <div class="show-image-box-edit hover-event">
+                        <img id="image-show" class='hover-event' src="<%= @game_event.google_file_url %>">
+                        <h2 class="edit-text hover-event">画像を変更</h2>
+                    </div>
+                <% else %>
+                    <div class="show-image-box-edit hover-event">
+                        <img id="image-show" class="hover-event">
+                        <h2 class="edit-text hover-event">画像を変更</h2>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="field">
+            <%= f.label "" do %>
+                ゲーム大会主催者
+                <span class="important-text">(必須)</span>
+            <% end %>
+            <%= f.text_field :event_master %>
+        </div>
+        <div class="field">
+            <%= f.label "大会開催日" %>
+            <div class="event_date_form_box">
+                <% if @game_event.event_date.present? %>
+                    <%= f.date_field :event_date %>
+                <% else %>
+                    <!-- もしevent_dateが無かったら現在の日日を表示させておく !-->
+                    <%= f.date_field :event_date, value: Time.now.strftime("%Y-%m-%d") %>
+                <% end %>
+            </div>
+        </div>
+        <div class="field">
+            <%= f.label "タグ" %>
+            <%= f.nested_fields :game_event_tags do |f_tag| %>
+                <%= f_tag.text_field :tag_name, placeholder: "例(KuroonRails杯)" , id: "tag_name_form-0",class: "tag_name_form" %>
+                <%= f.remove_nested_fields_button "削除", class: "red-button" %>
+            <% end %>
+            <br>
+            <%= f.add_nested_fields_button :game_event_tags, 'タグ追加',class: "blue-button", id: "tag_name_form_add_button" %>
+        </div>
+        
+        <div class="field">
+            <%= f.label "Twitter埋め込みコード" %><br>
+            <%= f.text_area :twitter_render %>
+        </div>
+        <%#= f_img.file_field :file, multiple: true, name: "game_event_files[file][]" %>
+        <div class="field image">
+            <%= f.file_field :image, id: "image-file-input-0", class: "hidden" %>
+        </div>
+
+        <div class="field submit-field">
+            <%= f.submit "送信", class: "submit-form" %>
+        </div>
+
+        <script>
+            $(document).ready( function(){
+                var id = 0;
+                var save_record_id = [];
+                $(`#image-select-button`).click(function(e){
+                    $get_id(`image-file-input-0`).click();
+                });
+                $(`#image-file-input-0`).change(function(e){
+                    var file = e.target.files[0];
+                    if(!file.type.match(/image/)){
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function(event){
+                        $(`#image-show`).attr('src', event.target.result);
+                        $(`#image-select-button`).addClass("hidden");
+                        $(`.show-images-box`).removeClass("hidden");
+                    }
+                    reader.readAsDataURL(file);
+                });
+                $(`.show-images-box`).hover(function(){
+                    $(`.hover-event`).addClass("dis");
+                },function(){
+                    $(`.hover-event`).removeClass("dis");
+                });
+                $(`#image-show`).click(function(){
+                    $get_id(`image-file-input-0`).click();
+                });
+                <% if defined?(edit_mode) %>
+                    $('.show-images-box').removeClass("hidden");
+                <% end %>
+            });
+        </script>
+    <% end %>
+</div>

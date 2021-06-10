@@ -1,0 +1,16 @@
+Rails.application.routes.draw do
+  devise_for :users
+  resources :users
+  get '/game_events' => 'game_events#index', as: "game_events"
+  resources :games do
+    resources :game_events, only: [:new, :destroy, :show, :update, :edit],  as: "event" do
+    end
+    post 'game_events' => 'game_events#create', as: "game_events"
+    post 'image_uploads' => 'game_events#image_upload'
+  end
+  get '/game_event_tags/autocomplete_tag_name'
+  get "/search" => 'search#index'
+  root 'games#index'
+  get "/game_events/new" => 'game_events#game_events_new'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+end

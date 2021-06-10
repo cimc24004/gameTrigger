@@ -1,0 +1,30 @@
+
+<div class="game-show-box">
+    <% if @game.image? %>
+        <div class="game_image_show_box">
+            <%= image_tag @game.google_file_url.to_s, class: "game_image_show_go" %>
+        </div>
+    <% end %>
+    <div class="game-event-new-button-box">
+        <%= link_to new_game_event_path(game_id: @game), class: "text-decoration-none" do %>
+            <div class="game-event-new-button-into-box">
+                <h3><%= "#{@game.title}の大会情報登録" %></h3>
+            </div>
+        <% end %>
+    </div>
+    <h1 class="game_title_show"><%= @game.title %>の大会一覧</h1>
+    <%= render partial: "search/form", locals: {default_value: @game.id, url: ""} %>
+    <div class="game_events_show_box">
+        <%= render partial: "game_events/game_events" %>
+    </div>
+    <%= link_to "削除" ,game_path(@game), method: :delete %>
+</div>
+<div class="paginate-box">
+    <%= paginate @game_events %>
+</div>
+<style>
+    .search-form-box{
+        max-width: 350px;
+        
+    }
+</style>

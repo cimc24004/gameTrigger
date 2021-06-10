@@ -1,0 +1,6 @@
+<%= form_with model: @game, local: true do |f| %>
+    <%= f.text_field :title %><br>
+    <%= f.label "画像" %>
+        <%= f.file_field :image %>
+    <%= f.submit "送信" %>
+<% end %>

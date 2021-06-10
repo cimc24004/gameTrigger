@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GameTrigger</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "reset.css" %>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag "application", media: 'all' %>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="background-modal-menu-click-box">
+    </div>
+    <div class="header-top-box">
+      <header>
+          <%= link_to root_path, class: "top-text-link" do %>
+            <h2 class="top-text">GameTrigger</h2>
+          <% end %>
+          <%= render "layouts/nav" %>
+      </header>
+    </div>
+    <div class="space-box">
+  
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

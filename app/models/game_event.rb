@@ -1,0 +1,83 @@
+class GameEvent < ApplicationRecord
+    belongs_to :game
+    belongs_to :user
+    mount_uploader :image, FileUploader
+    validates :title, presence: true
+    validates :event_master, presence: true
+    has_many :game_event_tags, dependent: :destroy
+    validates_length_of :game_event_tags, maximum: 10
+    accepts_nested_attributes_for :game_event_tags, allow_destroy: true
+    after_create_commit :game_event_image_upload_to_google_drive
+    after_update_commit :game_event_image_update_to_google_drive
+    after_destroy_commit :game_event_image_destroy_to_google_drive
+    def game_event_image_upload_to_google_drive
+      session = session_get()
+      if Rails.env.development?
+        upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                           .file_by_title("GameEventImageDevelopment")
+        
+      else
+        upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                           .file_by_title("GameEventImageProduction")
+      end
+      file_name = image.file.original_filename
+      file_ext = File.extname(file_name) #拡張子を取得
+      file_find = upload_to_folder.upload_from_file(image.current_path, "game-event-image-#{id}-image#{file_ext}", convert: false)
+      update(google_file_id: file_find.id, google_file_url: "https://drive.google.com/uc?id=#{file_find.id}")
+  
+    end
+  
+    def game_event_image_update_to_google_drive
+      session = session_get()
+      target_file = session.file_by_id(google_file_id)
+      target_file.update_from_file(image.current_path)
+    end
+  
+    def game_event_image_destroy_to_google_drive
+      session = session_get()
+      if Rails.env.development?
+        upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                           .file_by_title("GameEventImageDevelopment")
+        
+      else
+        upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                           .file_by_title("GameEventImageProduction")
+      end
+      session.drive_service.delete_file(google_file_id, supports_all_drives: true)
+    end
+    def check_tags_count(tag_count)
+        if tag_count > 10
+            errors.add(:game_event, "タグの数は10個までです。")
+            return false;
+        else
+            return true;
+        end
+    end
+    def check_images_count(image_count)
+        if image_count > 10
+            errors.add(:image_count, "画像の数は5つまでです。")
+            return false;
+        else
+            return true;
+        end
+    end
+
+    private
+
+    def session_get
+      credentials = Google::Auth::UserRefreshCredentials.new(
+        client_id: ENV["DRIVE_CLIENT_ID"],
+        client_secret: ENV["DRIVE_CLIENT_SECRET"],
+        scope: [
+          "https://www.googleapis.com/auth/drive"
+        ],
+        redirect_uri: ENV["REQUEST_URL"],
+        refresh_token: ENV["DRIVE_REFRESH_TOKEN"])
+  
+        credentials.update!(access_token: credentials.refresh_token)    
+  
+        credentials.fetch_access_token!
+        session = GoogleDrive.login_with_oauth(credentials.access_token)
+        return session
+    end
+end

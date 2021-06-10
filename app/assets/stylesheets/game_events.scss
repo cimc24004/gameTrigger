@@ -1,0 +1,409 @@
+// Place all the styles related to the game_events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.game_event_into_box{
+    border: 1px solid #000;
+    padding: 10px;
+}
+.game_events_index_search_form_box{
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+.game-event-new-link-box{
+    padding: 10px;
+
+}
+.game_event_image_show{
+   width: 70%;
+}
+.show-image-box-edit{
+    margin-top: 30px;
+}
+.game_event_image_show_box{
+    text-align: center;
+}
+#image-show{
+    position: relative;
+
+}
+#image-select-button.hidden{
+    display: none;
+}
+#image-select-button{
+    padding: 7px;
+    border-style: none;
+    background-color: #ffffff;
+    color: rgb(36, 36, 36);
+    // border: 1px solid rgb(0, 0, 0);
+    box-shadow: 1px 1px 3px #404040;
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    // background-image: asset-url("");
+}
+#image-select-button:hover{
+    opacity: 0.8;
+}
+.image-select-upload{
+    line-height: 5px;
+}
+.edit-text{
+    display: none; 
+    color: #fff;
+    position: absolute;
+    z-index: 10;
+    font-size: 1.2em;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.show-images-box{
+    max-width: 70%;
+    margin: 0 auto;
+    position: relative;
+}
+#image-show.hover-event.dis{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.show-images-box.hover-event.dis{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1,1,1,1);
+}
+.edit-text.hover-event.dis{
+    display: block;
+}
+#image-show{
+    width: 100%;
+}
+#game_event_body{
+    height: 300px;
+    min-width: 100%;
+}
+.game_event_tags_nested_fields{
+    button{
+        margin-left: 1px;
+    }
+    margin-bottom: 10px;
+
+    display: flex;
+}
+.tag-form-one-box{
+    max-width: 500px;
+    display: flex;
+    margin-top: 3px;
+}
+.game_event_sentence_show_box{
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 30px;
+}
+.game_event_new_box form label{
+    font-size: 18px;
+}
+.game_event_new_box{
+    form{
+        input[type='text'],input[type='date'],select,textarea{
+            width: 100%;
+            height: 38px;
+            padding-left: 10px;
+            max-width: 100%;
+        }
+    }
+    #game_event_event_date{
+        max-width: 200px;
+    }
+    .important-text{
+        color: red;
+    }
+    .field{
+        margin-top: 30px;
+
+    }
+    .field label{
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+} 
+.game_event_new_box form{
+    max-width: 650px;
+}
+#game_event_game_id{
+    width: 100%;
+}
+.game-event-new-button-box{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.game_event_new_box form .field .tag_name_form{
+    width: 70%;
+}
+#tag_name_form_add_button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.game_event_new_box{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.game-link{
+    text-decoration: none;
+}
+.game_event_box{
+    margin-bottom: 20px;
+}
+.fr-fic{
+    max-width: 100%;
+}
+.game_events_show_box{
+    padding-top: 50px;
+}
+.page-link{
+    text-decoration: none;
+}
+.paginate-box{
+    // display: flex;
+    // justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.page.current{
+    background-color: rgb(70, 132, 255);
+    color: #fff;
+    
+}
+.page:hover{
+    opacity: 0.8;
+    background-color: rgb(242, 242, 242);
+}
+.page.current:hover{
+    background-color: rgb(70, 132, 255);
+    opacity: 1;
+
+}
+.tag_name_form_delete_button{
+    padding: 5px;
+    
+}
+.red-button{
+    background-color: #b53333;
+    color: #fff;
+    transition: 0.3s ease background-color;
+    border-style: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.red-button:hover{
+    background-color: #932929;
+    
+}
+.page.gap{
+    border-right: 1px solid rgb(167, 167, 167);
+    position: relative;
+    /* margin-bottom: 10px; */
+    top: -15px;
+    height: 24px;
+    line-height: 25px;
+}
+.page.gap:hover{
+    opacity: 1;
+    background-color: #fff;
+}
+.page{
+    padding: 10px;
+    border-top: 1px solid rgb(167, 167, 167);
+    border-bottom: 1px solid rgb(167, 167, 167);
+    border-left: 1px solid rgb(167, 167, 167);
+    background-color: #fff;
+    font-weight: bold;
+    color: #000;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination > :last-child .page{
+    border-right: 1px solid rgb(167, 167, 167);
+}
+.pagination > .page.gap:first-child{
+    border-right: none;
+}
+.game-outside-box{
+    max-width: 100%;
+}
+.game-box:hover{
+    opacity: 0.8;
+}
+.game_event_show_title{
+    color: #404040;
+    margin-left: 10px;
+}
+.event_master_form_box{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.game_event_show_tags_box{
+    display: flex;
+}
+.event_date_form_box{
+    margin-bottom: 30px;
+}
+.game_event_tag_box{
+    color: #fff;
+    background-color: #6a7c94;
+    padding: 10px 8px; 
+    border-radius: 15px;
+}
+.game_event_tag_link{
+    text-decoration: none;
+    margin-right: 20px; 
+}
+#keywards{
+    height: 35px;
+}
+.game_event_tag_link:hover{
+    .game_event_tag_box{
+        background-color: #4d5b6d;
+    }
+}
+#game_event_twitter_render{
+    height: 200px;
+    resize: none;
+}
+.sub-title-box{
+    margin-bottom: 20px;
+    padding: 15px;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.sub-title-text-show{
+    padding: 5px;
+    background-color: #c03f5d;
+    border-radius: 10px;
+    color: #fff;
+    margin-right: 10px;
+}
+.game_event_destroy_box{
+    margin-top: 25px;
+}
+.game_event_show_title_box{
+    // border-bottom: 1px solid rgb(96, 96, 96);
+    border-left: 3px solid #7848f4;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px; 
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+.game-event-list-tr td{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background-color: rgb(77, 77, 77);
+    color: #fff;
+    height: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
+}
+.game-event-table{
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.game-event-list-tr.record td{
+    background-color: #fff;
+    color: #000;
+}
+.game-event-list-tr{
+    height: 50px;
+
+}
+.game_event_show_image{
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+.game_events_show_box{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.game_title_show{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.game_title_game_event_show_text{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.game_image_show_box{
+    margin-bottom: 40px;
+}
+.game-event-table-desc{
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+ol{
+    list-style-position: inside;
+}
+.game_event_body_box{
+    width: 100%;
+    word-break: break-all;
+    margin-top: 50px;
+}
+.game_event_body_box ol li::marker{
+    margin-left: 20px;
+}
+.game-detail-td{
+    width: 15%;
+}
+.game-date-td{
+    width: 25%;
+}
+.game-title-td{
+    width: 25%;
+}
+.game-event-title-td{
+    width: 35%;
+    word-break: break-all;
+}
+.game-event-title-td a{
+    color: rgb(55, 55, 55);
+}
+@media screen and (max-width: 800px){
+    .game_event_image_show{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 500px){
+    .game-event-list-tr td{
+        font-size: 14px;
+    }
+    #game_event_event_master{
+        max-width: 100%;
+    }
+    .detail-game-event-button{
+        font-size: 13px;
+    }
+    .game_event_show_title{
+        font-size: 25px;
+    }
+    .game-date-td{
+        width: 23%;
+    }
+    .game-event-title-td{
+        width: 27%;
+    }
+    .game-title-td{
+        width: 30%;
+    }
+    .game-detail-td{
+        width: 20%;
+    }
+}
