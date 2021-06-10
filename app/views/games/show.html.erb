@@ -17,7 +17,11 @@
     <div class="game_events_show_box">
         <%= render partial: "game_events/game_events" %>
     </div>
-    <%= link_to "削除" ,game_path(@game), method: :delete %>
+    <% if user_signed_in? %>
+        <% if current_user.id == @game.user_id %>
+            <%= link_to "削除" ,game_path(@game), method: :delete %>
+        <% end %>
+    <% end %>
 </div>
 <div class="paginate-box">
     <%= paginate @game_events %>
