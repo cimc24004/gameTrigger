@@ -30,6 +30,19 @@
 #image-select-button.hidden{
     display: none;
 }
+.red-button.delete-span-box{
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.delete-icon{
+    width: 25px;
+    height: 25px;
+    margin-top: 4px;
+}
 #image-select-button{
     padding: 7px;
     border-style: none;
@@ -291,6 +304,12 @@
 }
 .game_event_destroy_box{
     margin-top: 25px;
+    width: 90px;
+}
+.destroy-text{
+    line-height: 30px;
+    font-size: 16px;
+    margin-right: 10px;
 }
 .game_event_show_title_box{
     // border-bottom: 1px solid rgb(96, 96, 96);

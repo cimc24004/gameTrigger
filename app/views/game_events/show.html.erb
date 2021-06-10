@@ -25,7 +25,12 @@
     <% if user_signed_in? %>
         <% if current_user.id == @game_event.user_id %>
             <div class="game_event_destroy_box">
-                <%= button_to "削除", game_event_path(game_id: @game.id,id: @game_event.id), method: :delete %>
+                <%= link_to game_event_path(game_id: @game.id, id: @game_event.id), method: :delete, class: "text-decoration-none" do  %>
+                    <span class="red-button delete-span-box">
+                        <%= image_tag "delete-icon.png",class: "delete-icon" %>
+                        <h3 class="destroy-text">削除</h3>
+                    </span>
+                <% end %>
             </div>
         <% end %>
     <% end %>
