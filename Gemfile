@@ -62,6 +62,6 @@ gem 'kaminari', '~> 1.1'
 gem 'nested_fields', git: 'https://github.com/kmdtmyk/nested_fields'
 gem 'google_drive'
 gem 'dotenv-rails'
-# group :production do
-#   gem 'pg'
-# end
+group :production do
+  gem 'pg'
+end
