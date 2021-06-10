@@ -54,5 +54,4 @@ production:
   # username: GameTrigger
   # password: <%#= ENV['GAMETRIGGER_DATABASE_PASSWORD'] %>
   adapter: mysql2
-  encoding: unicode
   pool: 5
