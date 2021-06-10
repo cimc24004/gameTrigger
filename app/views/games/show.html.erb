@@ -1,6 +1,6 @@
 
 <div class="game-show-box">
-    <% if @game.image? %>
+    <% if @game.google_file_url.present? %>
         <div class="game_image_show_box">
             <%= image_tag @game.google_file_url.to_s, class: "game_image_show_go" %>
         </div>

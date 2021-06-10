@@ -3,7 +3,7 @@
         <%= link_to game_path(game), class: "game-link" do %>
             <object>
                 <div class="game-box">
-                    <% if game.image? %>
+                    <% if game.google_file_url.present? %>
                         <div class="game-image-box">
                             <%= image_tag game.google_file_url.to_s, class: "game_show_image all" %>
                         </div>
