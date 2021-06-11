@@ -14,11 +14,35 @@
     padding: 10px;
 
 }
+#show-image-delete-button img{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 10px; 
+}
+.image-edit-box{
+    position: relative;
+    background-color: #fff;
+    padding: 5px;
+}
+#show-image-delete-button{
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    left: 5px; 
+    position: absolute;
+    z-index: 10;
+    border-radius: 50%;
+}
+#show-image-delete-button:hover{
+    opacity: 0.8;
+}
 .game_event_image_show{
    width: 70%;
 }
 .show-image-box-edit{
-    margin-top: 30px;
+    margin-top: 50px;
+    border: 1px solid #ddd;
 }
 .game_event_image_show_box{
     text-align: center;
@@ -212,8 +236,7 @@
     padding-right: 10px;
 }
 .red-button:hover{
-    background-color: #932929;
-    
+    opacity: 0.8;    
 }
 .page.gap{
     border-right: 1px solid rgb(167, 167, 167);
@@ -304,7 +327,7 @@
 }
 .game_event_destroy_box{
     margin-top: 25px;
-    width: 90px;
+    width: 80px;
 }
 .destroy-text{
     line-height: 30px;

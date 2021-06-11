@@ -28,14 +28,23 @@
         </div>
         <div class="field">
             <% if defined?(edit_mode) %>
-                <div class="edit-image-button-box hidden">
-                    <%= f.label "画像" %><br>
-                    <span id="image-select-button" class="button-hover">
-                        <%= image_tag "image-upload-icon.png", class: "image-select-upload" %>
-                        画像を選択
-                    </span>
-                </div>
-
+                <% if @game_event.image.present? %>
+                    <div class="edit-image-button-box hidden">
+                        <%= f.label "画像" %><br>
+                        <span id="image-select-button" class="button-hover">
+                            <%= image_tag "image-upload-icon.png", class: "image-select-upload" %>
+                            画像を選択
+                        </span>
+                    </div>
+                <% else %>
+                    <div class="edit-image-button-box">
+                        <%= f.label "画像" %><br>
+                        <span id="image-select-button" class="button-hover">
+                            <%= image_tag "image-upload-icon.png", class: "image-select-upload" %>
+                            画像を選択
+                        </span>
+                    </div>
+                <% end %>
             <% else %>
                 <div class="edit-image-button-box">
                     <%= f.label "画像" %><br>
@@ -45,19 +54,45 @@
                     </span>
                 </div>
             <% end %>
-            <div class="show-images-box hover-event hidden">
-                <% if defined?(edit_mode) %>
-                    <div class="show-image-box-edit hover-event">
-                        <img id="image-show" class='hover-event' src="<%= @game_event.google_file_url %>">
-                        <h2 class="edit-text hover-event">画像を変更</h2>
+            <% if defined?(edit_mode) %>
+                <% if @game_event.image.present? %>
+                    <div class="image-edit-box">
+                        <span id="show-image-delete-button" class="button-hover">
+                            <%= image_tag "batsu.png" %>
+                        </span>
+                        <div class="show-images-box hover-event" class="button-hover">
+                            <div class="show-image-box-edit hover-event">
+                                <img id="image-show" class='hover-event' src="<%= @game_event.google_file_url %>">
+                                <h2 class="edit-text hover-event">画像を変更</h2>
+                            </div>
+                        </div>
                     </div>
                 <% else %>
-                    <div class="show-image-box-edit hover-event">
-                        <img id="image-show" class="hover-event">
-                        <h2 class="edit-text hover-event">画像を変更</h2>
+                    <div class="image-edit-box hidden">
+                        <span id="show-image-delete-button" class="button-hover">
+                            <%= image_tag "batsu.png" %>
+                        </span>
+                        <div class="show-images-box hover-event" class="button-hover">
+                            <div class="show-image-box-edit hover-event">
+                                <img id="image-show" class='hover-event'>
+                                <h2 class="edit-text hover-event">画像を変更</h2>
+                            </div>
+                        </div>
                     </div>
                 <% end %>
-            </div>
+            <% elsif !defined?(edit_mode) %>
+                <div class="image-edit-box hidden">
+                    <span id="show-image-delete-button" class="button-hover">
+                        <%= image_tag "batsu.png" %>
+                    </span>
+                    <div class="show-images-box hover-event" class="button-hover">
+                        <div class="show-image-box-edit hover-event">
+                            <img id="image-show" class="hover-event">
+                            <h2 class="edit-text hover-event">画像を変更</h2>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         </div>
 
         <div class="field">
@@ -81,7 +116,7 @@
         <div class="field">
             <%= f.label "タグ" %>
             <%= f.nested_fields :game_event_tags do |f_tag| %>
-                <%= f_tag.text_field :tag_name, placeholder: "例(KuroonRails杯)" , id: "tag_name_form-0",class: "tag_name_form" %>
+                <%= f_tag.text_field :tag_name, placeholder: "例(KuroonRails杯)" , required: "required",id: "tag_name_form-0",class: "tag_name_form" %>
                 <%= f.remove_nested_fields_button "削除", class: "red-button" %>
             <% end %>
             <br>
@@ -95,6 +130,8 @@
         <%#= f_img.file_field :file, multiple: true, name: "game_event_files[file][]" %>
         <div class="field image">
             <%= f.file_field :image, id: "image-file-input-0", class: "hidden" %>
+            <input type="checkbox" name="game_event[destroy_image]" class="hidden" value="false" id="image-file-destroy-0">
+            <%#= f.check_box :destroy_image,{checked: false}, id: "", class: "hidden" %>
         </div>
 
         <div class="field submit-field">
@@ -117,7 +154,8 @@
                     reader.onload = function(event){
                         $(`#image-show`).attr('src', event.target.result);
                         $(`#image-select-button`).addClass("hidden");
-                        $(`.show-images-box`).removeClass("hidden");
+                        $(`.image-edit-box`).removeClass("hidden");
+                        $get_id("image-file-destroy-0").value = "false";
                     }
                     reader.readAsDataURL(file);
                 });
@@ -132,6 +170,14 @@
                 <% if defined?(edit_mode) %>
                     $('.show-images-box').removeClass("hidden");
                 <% end %>
+                $(`#show-image-delete-button`).click(function(){
+                    $(`#image-show`).attr('src', null);
+                    $(`.image-edit-box`).addClass("hidden");
+                    $(`#image-select-button`).removeClass("hidden");
+                    $get_id("image-file-input-0").value = "";
+                    $get_id("image-file-destroy-0").value = "true";
+                    $(`.edit-image-button-box`).removeClass("hidden");
+                }); 
             });
         </script>
     <% end %>

@@ -31,14 +31,15 @@ class GameEvent < ApplicationRecord
   
     def game_event_image_update_to_google_drive
       if image.present?
-        session = session_get()
-        target_file = session.file_by_id(google_file_id)
-        target_file.update_from_file(image.current_path)
+        if saved_change_to_image?
+          session = session_get()
+          target_file = session.file_by_id(google_file_id)
+          target_file.update_from_file(image.current_path)
+        end
       end
     end
   
     def game_event_image_destroy_to_google_drive
-      if image.present?
         session = session_get()
         if Rails.env.development?
           upload_to_folder = session.file_by_title("GameTriggerUploaders")
@@ -49,7 +50,6 @@ class GameEvent < ApplicationRecord
                             .file_by_title("GameEventImageProduction")
         end
         session.drive_service.delete_file(google_file_id, supports_all_drives: true)
-      end
     end
     def check_tags_count(tag_count)
         if tag_count > 10

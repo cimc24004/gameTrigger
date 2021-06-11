@@ -63,10 +63,6 @@ class GameEventsController < ApplicationController
         @game_event.destroy
         redirect_to @game
     end
-    def image_from_base64(b64)
-        bin = Base64.decode64(b64.gsub(/data:image.+\,/, ""))
-        return bin
-    end
 
     private
 
@@ -85,7 +81,7 @@ class GameEventsController < ApplicationController
 
     def game_event_params
         params.require(:game_event).permit(:title,:file_url, :body,:image, :event_date, :twitter_render, :event_master,
-                                           game_event_tags_attributes: [:id, :tag_name, :_destroy, :game_event_id])
+                                           game_event_tags_attributes: [:tag_name])
     end
 
     def game_event_update_params
