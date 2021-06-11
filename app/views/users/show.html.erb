@@ -1,1 +1,6 @@
-<h1><%= @user.name %></h1>
+<div class="game_event_show_title_box">
+    <h2 class="game_events_of_user_text"><%= @user.name %>さんが提供した大会情報一覧</h2>
+</div>
+<div class="game_events_user_box">
+    <%= render partial: "game_events/game_events" %>
+</div>

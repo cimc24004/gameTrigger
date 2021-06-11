@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
     before_action :authenticate_user!, only: [:create, :edit, :update, :new, :destroy]
     before_action :game_find, only: [:edit, :update, :show, :destroy]
-    before_action :admin_check, only: [:edit, :create, :destroy, :new]
-    before_action :user_auth_check, only: [:edit, :update, :destroy]
+    before_action :admin_check, only: [:edit,:update, :create, :destroy, :new]
+    # before_action :user_auth_check, only: [:edit, :update, :destroy]
     def index
         @games = Game.all.includes(:game_events).order(id: :desc)
         @game_events = GameEvent.all.includes(:game_event_tags).order(created_at: :desc).limit(5)

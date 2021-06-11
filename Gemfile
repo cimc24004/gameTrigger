@@ -57,11 +57,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails', '~> 0.3.9'
 gem 'devise', '~> 4.8'
 gem 'carrierwave', '~> 2.2', '>= 2.2.1'
-gem "wysiwyg-rails"
+# gem "wysiwyg-rails"
 gem 'kaminari', '~> 1.1'
 gem 'nested_fields', git: 'https://github.com/kmdtmyk/nested_fields'
-gem 'google_drive'
-gem 'dotenv-rails'
+gem 'google_drive', '~> 3.0', '>= 3.0.7'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+gem 'omniauth-google-oauth2', '~> 1.0'
 group :production do
   gem 'pg'
 end

@@ -10,6 +10,9 @@
     margin-bottom: 50px;
     margin-top: 30px;
 }
+.game_events_user_box{
+    margin-top: 50px;
+}
 .game-event-new-link-box{
     padding: 10px;
 
@@ -426,6 +429,10 @@ ol{
 @media screen and (max-width: 500px){
     .game-event-list-tr td{
         font-size: 14px;
+    }
+    .game_events_of_user_text{
+        text-align: center;
+        font-size: 18px;
     }
     #game_event_event_master{
         max-width: 100%;

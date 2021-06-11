@@ -75,6 +75,7 @@
 }
 .game-box{
     max-width: 300px;
+    min-width: 300px;
     margin: 10px;
 }
 .game_show_image.show{
@@ -113,5 +114,13 @@
     .game_show_image{
         width: 100%;
         min-width: 0;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .game-box{
+        min-width: 100%;
+        margin-right: 0;
+        margin-left: 0;
     }
 }
