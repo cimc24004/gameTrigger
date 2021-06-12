@@ -106,8 +106,11 @@
             <%= f.label "大会開催日" %>
             <div class="event_date_form_box">
                 <%# if @game_event.event_date.present? %>
+                <% if request.browser == "Safari" %>
+                    <%= f.date_field :event_date, value: Date.today %>
+                <% else %>
                     <%= f.date_field :event_date %>
-                <% if  %>
+                <% end %>
                 <%# else %>
                     <!-- もしevent_dateが無かったら現在の日日を表示させておく !-->
                     <%#= f.date_field :event_date %>
