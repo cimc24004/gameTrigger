@@ -107,7 +107,9 @@
             <div class="event_date_form_box">
                 <%# if @game_event.event_date.present? %>
                 <% if request.browser == "Safari" %>
-                    <%= f.date_field :event_date, value: Date.today %>
+                    <% unless defined?(edit_mode) %>
+                        <%= f.date_field :event_date, value: Date.today %>
+                    <% end %>
                 <% else %>
                     <%= f.date_field :event_date %>
                 <% end %>
