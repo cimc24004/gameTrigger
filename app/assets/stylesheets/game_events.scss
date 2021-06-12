@@ -18,7 +18,17 @@
     display: flex;
     justify-content: space-between;
 }
-
+.edit-button-text{
+    line-height: 30px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.user-action-button-box{
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    margin-top: 10px;
+}
 .game-event-new-link-box{
     padding: 10px;
 
@@ -235,18 +245,7 @@
     padding: 5px;
     
 }
-.red-button{
-    background-color: #b53333;
-    color: #fff;
-    transition: 0.3s ease background-color;
-    border-style: none;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.red-button:hover{
-    opacity: 0.8;    
-}
+
 .page.gap{
     border-right: 1px solid rgb(167, 167, 167);
     position: relative;
@@ -334,8 +333,20 @@
     color: #fff;
     margin-right: 10px;
 }
+
+.green-button.edit-span-box{
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.game_event_edit_box{
+    width: 80px;
+}
 .game_event_destroy_box{
-    margin-top: 25px;
     width: 80px;
 }
 .destroy-text{

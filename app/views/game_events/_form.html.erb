@@ -105,12 +105,13 @@
         <div class="field">
             <%= f.label "大会開催日" %>
             <div class="event_date_form_box">
-                <% if @game_event.event_date.present? %>
+                <%# if @game_event.event_date.present? %>
                     <%= f.date_field :event_date %>
-                <% else %>
+                <% if  %>
+                <%# else %>
                     <!-- もしevent_dateが無かったら現在の日日を表示させておく !-->
-                    <%= f.date_field :event_date, value: Time.now.strftime("%Y-%m-%d") %>
-                <% end %>
+                    <%#= f.date_field :event_date %>
+                <%# end %>
             </div>
         </div>
         <div class="field">

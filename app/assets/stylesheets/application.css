@@ -62,12 +62,34 @@ button,input[type="submit"],input[type="button"],submit{
     background-color: rgb(77, 77, 77);
     z-index: 10;
 }
+.green-button{
+    background-color: #2b9b23;
+    color: #fff;
+    border-radius: 5px;
+}
+.green-button:hover{
+    opacity: 0.8; 
+}
+.red-button{
+    background-color: #b53333;
+    color: #fff;
+    transition: 0.3s ease background-color;
+    border-style: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+.red-button:hover{
+    opacity: 0.8;    
+}
 .blue-button{
     background-color: rgb(57, 106, 143);
     color: #fff; 
     border-style: none;
     padding: 7px;
     box-shadow: 1px 1px 3px rgb(121, 121, 121);
+    border-radius: 5px;
 }
 .blue-button:hover{
     opacity: 0.8;
