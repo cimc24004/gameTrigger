@@ -50,9 +50,18 @@ class GameEventsController < ApplicationController
     end
 
     def update
-        @image_caches = []
-        @_destroy_record = []
+        image_upload = false
+        if @game_event.google_file_id.present?
+            image_upload = true
+        end
         if @game_event.update!(game_event_update_params)
+            if @game_event.image.present?
+                if image_upload
+                    @game_event.game_event_image_update_to_google_drive
+                else
+                    @game_event.game_event_image_upload_to_google_drive
+                end
+            end
             redirect_to game_event_path(id: @game_event.id, game_id: @game_event.game.id)
         else
             render 'edit'

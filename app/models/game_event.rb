@@ -8,7 +8,7 @@ class GameEvent < ApplicationRecord
     validates_length_of :game_event_tags, maximum: 10
     accepts_nested_attributes_for :game_event_tags, allow_destroy: true
     after_create_commit :game_event_image_upload_to_google_drive
-    after_update_commit :game_event_image_update_to_google_drive
+    # after_update_commit :game_event_image_update_to_google_drive
     after_destroy_commit :game_event_image_destroy_to_google_drive
     def game_event_image_upload_to_google_drive
       if image.present?
