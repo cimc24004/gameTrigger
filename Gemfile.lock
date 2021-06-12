@@ -353,10 +353,11 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari (~> 1.1)
   listen (~> 3.3)
+  mini_magick (~> 4.11)
   mysql2 (~> 0.5)
   nested_fields!
   omniauth-google-oauth2 (~> 1.0)
-  omniauth-rails_csrf_protection
+  omniauth-rails_csrf_protection (~> 1.0)
   pg
   pry-rails (~> 0.3.9)
   puma (~> 5.0)

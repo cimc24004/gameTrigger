@@ -66,4 +66,5 @@ gem 'omniauth-google-oauth2', '~> 1.0'
 group :production do
   gem 'pg'
 end
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'mini_magick', '~> 4.11'

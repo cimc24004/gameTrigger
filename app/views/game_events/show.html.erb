@@ -1,5 +1,9 @@
 <% content_for(:sub_title) { @game_event.title } %>
-<% content_for(:meta_body) { @game_event.body } %>
+<% if @game_event.body.present? %>
+    <% content_for(:meta_body) { @game_event.body.truncate(100) } %>
+<% elsif @game_event.twitter_render.present? %>
+    <% content_for(:meta_body) { @game_event.twitter_render } %>
+<% end %>
 <div class="game_event_show_box"> 
     
     <div class="game_event_show_title_box">
@@ -40,7 +44,7 @@
         <% if @game_event.google_file_url.present? %>
             <div class="game_event_image_show_box">
                 <%= image_tag @game_event.google_file_url, class: "game_event_image_show" %>
-                <% content_for(:meta_image) { @game_event.google_file_url } %>
+                <% content_for(:meta_image) { "https://drive.google.com/uc?id=#{@game_event.google_file_id_of_ogp}" } %>
             </div>
         <% end %>
         <div class="game_event_twitter_render_box">

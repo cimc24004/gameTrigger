@@ -21,11 +21,12 @@ class GameEvent < ApplicationRecord
           upload_to_folder = session.file_by_title("GameTriggerUploaders")
                             .file_by_title("GameEventImageProduction")
         end
-        
         file_name = image.file.original_filename
         file_ext = File.extname(file_name) #拡張子を取得
         file_find = upload_to_folder.upload_from_file(image.current_path, "game-event-image-#{id}-image#{file_ext}", convert: false)
-        update(google_file_id: file_find.id, google_file_url: "https://drive.google.com/uc?id=#{file_find.id}")
+        file_find_ogp = upload_to_folder.upload_from_file(image.versions[:ogp].current_path, "game-event-image-#{id}-ogp_image#{file_ext}", convert: false)
+
+        update(google_file_id: file_find.id,google_file_id_of_ogp: file_find_ogp.id, google_file_url: "https://drive.google.com/uc?id=#{file_find.id}")
       end
     end
   
@@ -34,7 +35,9 @@ class GameEvent < ApplicationRecord
         if saved_change_to_image?
           session = session_get()
           target_file = session.file_by_id(google_file_id)
+          target_file_ogp = session.file_by_id(google_file_id_of_ogp)
           target_file.update_from_file(image.current_path)
+          target_file_ogp.update_from_file(image.versions[:ogp].current_path)
         end
       end
     end
@@ -50,6 +53,7 @@ class GameEvent < ApplicationRecord
                             .file_by_title("GameEventImageProduction")
         end
         session.drive_service.delete_file(google_file_id, supports_all_drives: true)
+        session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
     end
     def check_tags_count(tag_count)
         if tag_count > 10
