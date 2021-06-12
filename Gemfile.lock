@@ -213,6 +213,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     os (1.1.1)
     pg (1.2.3)
@@ -353,6 +356,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   nested_fields!
   omniauth-google-oauth2 (~> 1.0)
+  omniauth-rails_csrf_protection
   pg
   pry-rails (~> 0.3.9)
   puma (~> 5.0)

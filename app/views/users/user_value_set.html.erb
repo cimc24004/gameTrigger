@@ -1,0 +1,4 @@
+<%= form_with model: @user, local: true do |f| %>
+    <%= f.text_field :name, value: @session.info.name %><br>
+    <%= f.submit "送信" %>
+<% end %>

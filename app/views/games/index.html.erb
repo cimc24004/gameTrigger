@@ -1,3 +1,4 @@
+<% content_for(:sub_title) { "ゲーム一覧" } %>
 <% if user_signed_in? %>
     <% if current_user.admin %>
         <%= link_to "ゲーム作成", new_game_path %>

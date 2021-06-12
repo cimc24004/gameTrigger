@@ -10,9 +10,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    name = params[:user][:name]
+    @session_env = OmniAuth::AuthHash.new(session["devise.omniauth_data"])
+    @user = User.create_account_by_google(@session_env, name)
+    sign_in_and_redirect @user, event: :authentication
+    session[:user_id] = @user.id
+    if session["devise.omniauth_data"].present?
+      session["devise.omniauth_data"].clear
+    end
+  end
 
   # GET /resource/edit
   # def edit

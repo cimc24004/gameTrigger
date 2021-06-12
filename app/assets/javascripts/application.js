@@ -7,13 +7,13 @@ $(function(){
             $('.smartphone-menu-box').addClass("dis");
             $('.smartphone-menu-button').addClass("dis");
             $('.background-modal-menu-click-box').addClass("dis");
-            $('.header-top-box').addClass("dis");
+            // $('.header-top-box').addClass("dis");
             click_menu = true;
         }else{
             $('.smartphone-menu-box').removeClass("dis");
             $('.smartphone-menu-button').removeClass("dis");
             $('.background-modal-menu-click-box').removeClass("dis");
-            $('.header-top-box').removeClass("dis");
+            // $('.header-top-box').removeClass("dis");
             click_menu = false;
         }
     });

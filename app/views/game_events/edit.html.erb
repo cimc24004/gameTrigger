@@ -1,1 +1,2 @@
 <%= render 'form', {edit_mode: true, url: game_event_path(game_id: @game.id, id: @game_event.id)} %>
+<% content_for(:sub_title) { "ゲーム大会情報の編集" } %>

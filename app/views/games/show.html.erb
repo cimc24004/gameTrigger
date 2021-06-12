@@ -1,3 +1,4 @@
+<% content_for(:sub_title) { @game.title } %>
 
 <div class="game-show-box">
     <% if @game.google_file_url.present? %>
@@ -7,8 +8,18 @@
     <% end %>
     <% if user_signed_in? %>
         <% if current_user.admin %>
-            <%= link_to "編集", edit_game_path(@game) %>
-            <%= link_to "削除" ,game_path(@game), method: :delete %>
+            <div class="admin-edit-and-delete-box">
+                <%= link_to edit_game_path(@game), class: "text-decoration-none" do %>
+                    <span class="blue-button">
+                        編集
+                    </span>
+                <% end %>
+                <%= link_to game_path(@game),data: {confirm: "本当に削除をしますか？"}, method: :delete, class: "text-decoration-none" do %>
+                    <span class="red-button">
+                        削除
+                    </span>
+                <% end %>
+            </div>
         <% end %>
     <% end %>
     <div class="game-event-new-button-box">

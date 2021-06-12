@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    registrations: 'users/registrations' }
+  resources :users do
+    collection do 
+      get 'user_value_set' => 'users#user_value_set'
+    end
+  end
   get '/game_events' => 'game_events#index', as: "game_events"
   resources :games do
     resources :game_events, only: [:new, :destroy, :show, :update, :edit],  as: "event" do

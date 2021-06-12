@@ -1,3 +1,5 @@
+<% content_for(:sub_title) { @game_event.title } %>
+<% content_for(:meta_body) { @game_event.body } %>
 <div class="game_event_show_box"> 
     
     <div class="game_event_show_title_box">
@@ -38,6 +40,7 @@
         <% if @game_event.google_file_url.present? %>
             <div class="game_event_image_show_box">
                 <%= image_tag @game_event.google_file_url, class: "game_event_image_show" %>
+                <% content_for(:meta_image) { @game_event.google_file_url } %>
             </div>
         <% end %>
         <div class="game_event_twitter_render_box">

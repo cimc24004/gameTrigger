@@ -1,6 +1,6 @@
 class GameEventsController < ApplicationController
     
-    before_action :authenticate_user!, only: [:create, :destroy, :update, :new, :edit]
+    before_action :authenticate_user!, only: [:create, :destroy, :update, :new, :edit, :game_events_new]
     before_action :parent_game_find, only: [:create, :new, :show, :update, :destroy, :edit]
     before_action :game_event_find, only: [:show, :update, :destroy, :edit]
     before_action :user_auth_check, only: [:destroy, :update, :edit]

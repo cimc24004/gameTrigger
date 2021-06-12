@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!
-    before_action :user_find
-    before_action :user_auth_check
+    before_action :authenticate_user!, only: [:show]
+    before_action :user_find, only: [:show]
+    before_action :user_auth_check, only: [:show]
+
     def show
         @game_events = @user.game_events.includes(:user)
+    end
+
+    def user_value_set
+        if session['devise.omniauth_data'].blank? || user_signed_in?
+            redirect_to root_path and return
+        end
+        @session = OmniAuth::AuthHash.new(session["devise.omniauth_data"])
+        @user = User.new
     end
 
     private
