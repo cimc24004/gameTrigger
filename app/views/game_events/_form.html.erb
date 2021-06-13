@@ -137,6 +137,8 @@
         <%#= f_img.file_field :file, multiple: true, name: "game_event_files[file][]" %>
         <div class="field image">
             <%= f.file_field :image, id: "image-file-input-0", class: "hidden" %>
+            <%= f.hidden_field :image_cache %>
+
             <input type="checkbox" name="game_event[destroy_image]" class="hidden" value="false" id="image-file-destroy-0">
             <%#= f.check_box :destroy_image,{checked: false}, id: "", class: "hidden" %>
         </div>
@@ -166,6 +168,7 @@
                     }
                     reader.readAsDataURL(file);
                 });
+
                 $(`.show-images-box`).hover(function(){
                     $(`.hover-event`).addClass("dis");
                 },function(){
@@ -185,6 +188,12 @@
                     $get_id("image-file-destroy-0").value = "true";
                     $(`.edit-image-button-box`).removeClass("hidden");
                 }); 
+                <% if @game_event.image? %>
+                    $(`#image-show`).attr('src', "<%= @game_event.image.url %>");
+                    $(`#image-select-button`).addClass("hidden");
+                    $(`.image-edit-box`).removeClass("hidden");
+                    $get_id("image-file-destroy-0").value = "false";
+                <% end %>
             });
         </script>
     <% end %>

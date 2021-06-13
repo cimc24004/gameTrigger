@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     def create
         @game = Game.new(game_params)
         @game.user_id = current_user.id
-        @game.save!
+        @game.save
         redirect_to root_path
     end
 
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
         if @game_event.google_file_id.present?
             image_upload = true
         end
-        if @game_event.update!(game_params)
+        if @game_event.update(game_params)
             if @game_event.image.present?
                 if image_upload
                     @game_event.game_event_image_update_to_google_drive

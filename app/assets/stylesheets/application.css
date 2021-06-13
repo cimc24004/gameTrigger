@@ -97,6 +97,9 @@ button,input[type="submit"],input[type="button"],submit{
 .green-button:hover{
     opacity: 0.8; 
 }
+.field.image{
+    display: none;
+}
 .red-button{
     background-color: #b53333;
     color: #fff;
