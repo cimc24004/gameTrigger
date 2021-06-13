@@ -50,6 +50,21 @@
             </div>
         <% end %>
     <% end %>
+    <div class="sns-share-box">
+        <div class="share-box">
+            <a href="https://twitter.com/share?text=<%= @game_event.title %>%0a&url=<%= request.url %>%0a%0a&hashtags=<%= @game.title %>,gameTrigger,<%= @game_event.title %>,ゲーム大会情報" class="twitter-share-button" data-show-count="false" data-size="large" data-lang="ja">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="share-box"> 
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.url %>&layout=button_count&size=large&width=93&height=31" width="93" height="31" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <div class="share-box line">
+            <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://request_url" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
+            <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
+        </div>
+    </div>
+
     <div class="game_event_sentence_show_box">
         <% if @game_event.google_file_url.present? %>
             <div class="game_event_image_show_box">

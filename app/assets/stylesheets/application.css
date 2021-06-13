@@ -97,6 +97,36 @@ button,input[type="submit"],input[type="button"],submit{
 .green-button:hover{
     opacity: 0.8; 
 }
+.share-into-box{
+    padding: 5px;
+    box-shadow: 1px 1px 3px #000;
+}
+.share-box{
+    display: inline-block;
+    margin-left: 30px;
+}
+.share-text{
+    color: #fff;
+}
+.share-into-box.twitter{
+    background-color: #1c83c4;
+}
+.sns-share-box{
+    padding-top: 50px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.sns-image-share{
+    width: 18px;
+    height: 18px;
+    padding-right: 3px;
+    padding-top: 1px;
+}
+.share-into-box{
+    display: flex;
+}
 .field.image{
     display: none;
 }
@@ -331,4 +361,11 @@ html .background-modal-menu-click-box.dis{
     .desktop-nav.pc-dis{
         display: none;
     }
+    .share-box{
+        margin-left: 0;
+    }
+    .sns-share-box{
+        justify-content: center;
+    }
+
 }
