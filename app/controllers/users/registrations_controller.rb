@@ -5,19 +5,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    redirect_to users_new_path
+  end
 
   # POST /resource
   def create
     name = params[:user][:name]
-    @session_env = OmniAuth::AuthHash.new(session["devise.omniauth_data"])
-    @user = User.create_account_by_google(@session_env, name)
-    sign_in_and_redirect @user, event: :authentication
-    session[:user_id] = @user.id
-    if session["devise.omniauth_data"].present?
-      session["devise.omniauth_data"].clear
+    @session = OmniAuth::AuthHash.new(session["devise.omniauth_data"])
+    @user = User.sns_account_create(@session, name)
+    if @user.id.present?
+      sign_in_and_redirect @user, event: :authentication
+      session[:user_id] = @user.id
+      if session["devise.omniauth_data"].present?
+        session["devise.omniauth_data"].clear
+      end    
+    else
+      render 'users/user_value_set'
     end
   end
 

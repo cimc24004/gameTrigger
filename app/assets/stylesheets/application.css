@@ -15,7 +15,9 @@
  *= require easy-autocomplete
 
  */
-
+.flex{
+    display: flex;
+}
 .space-box{
     margin: 0 auto;
     max-width: 1000px;
@@ -66,6 +68,7 @@ button,input[type="submit"],input[type="button"],submit{
     background-color: #2b9b23;
     color: #fff;
     border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(121, 121, 121);
 }
 .green-button:hover{
     opacity: 0.8; 
@@ -79,6 +82,7 @@ button,input[type="submit"],input[type="button"],submit{
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(121, 121, 121);
 }
 .red-button:hover{
     opacity: 0.8;    
@@ -136,8 +140,11 @@ button,input[type="submit"],input[type="button"],submit{
     margin-bottom: 15px;
     margin-right: 2px;
 }
+.inline-block{
+    display: inline-block;
+}
 .nav-text{
-    padding-top: 15px;
+    padding-top: 16px;
     padding-bottom: 15px;
     padding-right: 5px;
     padding-left: 5px;

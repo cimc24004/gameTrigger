@@ -67,22 +67,15 @@
                       </li>
                   <% end %>
               <% else %>
-                  <%= link_to new_user_session_path, class: "top-link" do %>
+                  <%= link_to users_new_path, class: "top-link" do %>
                       <li class="nav-li">
                           <%= image_tag "login_icon.png", class: "nav-icon-image" %>
-                          <p class="nav-text">ログイン</p>
-                      </li>
-                  <% end %>
-                  <%= link_to new_user_registration_path, class: "top-link end" do %>
-                      <li class="nav-li end">
-                      <%= image_tag "user_account_new.png", class: "nav-icon-image" %>
-                          <p class="nav-text">新規登録</p>
+                          <p class="nav-text">ログイン/ 新規登録</p>
                       </li>
                   <% end %>
               <% end %>
           </nav>
 
-          <%= render "layouts/nav" %>
       </header>
     </div>
     <nav class="smartphone-nav smart-dis">
@@ -111,15 +104,10 @@
                     </div>
                 <% end %>
             <% else %>
-                <%= link_to new_user_session_path, class: "top-link" do %>
-                    <div class="smartphone-menu-one-box">
-                        <h2>ログイン</h2>
-                    </div>
-                <% end %>
-                <%= link_to new_user_registration_path, class: "top-link end" do %>
-                    <div class="smartphone-menu-one-box">
-                        <h2>新規登録</h2>
-                    </div>
+                <%= link_to users_new_path, class: "top-link" do %>
+                    <li class="smartphone-menu-one-box">
+                        <h2>ログイン/ 新規登録</h2>
+                    </li>
                 <% end %>
             <% end %>
         </div>

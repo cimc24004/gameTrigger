@@ -1,0 +1,23 @@
+<h2 class="user-login-or-registration-text">ログイン/新規登録</h2>
+<div class="sns-buttons-box">
+    <div class="sns-button-out-box">
+        <%= link_to user_google_oauth2_omniauth_authorize_path, class: "text-decoration-none sns-button-link", method: :post do %>
+            <div class="sns-button button-hover">
+                <div class="flex">
+                    <%= image_tag "GoogleIcon.png", class: "sns-icon google" %>
+                    <h2 class="sns-text">Googleでログイン/ 新規登録</h2>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="sns-button-out-box twitter">
+        <%= link_to user_twitter_omniauth_authorize_path, class: "text-decoration-none sns-button-link", method: :post do %>
+            <div class="sns-button button-hover">
+                <div class="flex">
+                    <%= image_tag "twitter_logo.png", class: "sns-icon twitter" %>
+                    <h2 class="sns-text">Twitterでログイン/ 新規登録</h2>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

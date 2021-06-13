@@ -1,3 +1,119 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.sns-button{
+    padding: 15px;
+    display: inline-block;
+    color: #000;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 2px 2px 5px rgb(79, 79, 79);
+    border-radius: 5px;
+}
+.sns-button:hover{
+    background-color: rgb(237, 237, 237);
+}
+.delete-user-button{
+
+
+}
+.game_event_edit_box.user{
+    width: 170px;
+    margin: 0 0 0 auto;
+    padding-bottom: 30px;
+}
+.delete-user-box{
+    padding-top: 50px;
+    max-width: 120px;
+    margin: 0 0 0 auto;
+}
+.user-value-set-form{
+    background: #fff;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+.field-user-value-set-box{
+    margin-top: 20px;
+    max-width: 750px;
+    margin: 0 auto; 
+}
+.user-value-name{
+    width: 400px;
+    height: 30px;
+}
+.form-submit-and-text{
+    display: flex;
+    justify-content: center;
+}
+.sns-icon.google{
+    width: 3em;
+    height: 3em;
+}
+.field.submit.value-set{
+    display: flex;
+    margin-top: 20px;
+}
+.submit-name-set.game-event-new-button-into-box{
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+.label-name{
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+}
+.sns-icon.twitter{
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+}
+.sns-text{
+    font-size: 23px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.user-login-or-registration-text{
+    margin-bottom: 50px;
+    padding: 15px;
+    background-color: #fff;
+}
+.sns-buttons-box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.sns-button-out-box{
+    margin-right: 50px;
+}
+.sns-button-out-box.twitter{
+    margin-right: 0;
+}
+
+@media screen and (max-width: 850px){
+    .sns-text{
+        font-size: 20px;
+        padding-top: 12px;
+        padding-left: 10px;
+    }
+
+    .sns-button-out-box{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-right: 0;
+    }
+    .sns-buttons-box{
+        display: block; 
+    }
+    .sns-button{
+        padding: 10px;
+    }
+    .sns-button-out-box.twitter{
+        margin-top: 40px;
+    }
+}
+@media screen and (max-width: 500px){
+    .user-value-name{
+        width: 100%; 
+    }
+}

@@ -63,6 +63,7 @@ gem 'nested_fields', git: 'https://github.com/kmdtmyk/nested_fields'
 gem 'google_drive', '~> 3.0', '>= 3.0.7'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'omniauth-google-oauth2', '~> 1.0'
+gem 'omniauth-twitter', '~> 1.0'
 group :production do
   gem 'pg'
 end

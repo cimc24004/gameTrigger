@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                                    registrations: 'users/registrations' }
-  resources :users do
+                                    registrations: 'users/registrations' ,
+                                  sessions: 'users/sessions'}
+  get '/users/new'
+  
+  resources :users, only: [:show] do
     collection do 
       get 'user_value_set' => 'users#user_value_set'
     end

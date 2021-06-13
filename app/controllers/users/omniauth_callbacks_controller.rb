@@ -21,6 +21,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to user_value_set_users_path
     end
   end
+
+  def twitter
+    if session["devise.omniauth_data"].present?
+      session["devise.omniauth_data"].clear
+    end
+    @omniauth_env = request.env['omniauth.auth']
+    @user = User.find_by(provider: @omniauth_env.provider, uid: @omniauth_env.uid)
+    if @user.present?
+      sign_in_and_redirect @user, event: :authentication
+      session[:user_id] = @user.id
+    else
+      session['devise.omniauth_data'] = request.env['omniauth.auth'].except('extra')
+      redirect_to user_value_set_users_path
+    end
+  end
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 

@@ -1,4 +1,14 @@
-<%= form_with model: @user, local: true do |f| %>
-    <%= f.text_field :name, value: @session.info.name %><br>
-    <%= f.submit "送信" %>
-<% end %>
+<div class="game_event_show_title_box">
+    <h1 class="game_event_show_title">アカウントを作成</h1>
+</div>
+<div class="field-user-value-set-box">
+    <%= form_with model: @user, local: true,class: "user-value-set-form" do |f| %>
+            <div class="field">
+                <%= f.label "名前を入力", class: "inline-block label-name" %><br>
+                <div class="form-submit-and-text">
+                    <%= f.text_field :name, value: @session.info.name, class: "user-value-name" %><br>
+                    <%= f.submit "送信", class: "submit-name-set game-event-new-button-into-box" %>
+                </div>
+            </div>
+    <% end %>
+</div>
