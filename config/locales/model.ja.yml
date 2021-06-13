@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models: 
+      user: ユーザー
+      game_event: ゲーム大会情報
+      game: ゲーム
+      game_event_tags: タグ
+    attributes: 
+      user: 
+        name: 名前
+        password: パスワード
+        email: メールアドレス
+      game_event: 
+        title: タイトル
+        event_master: 主催者
+        image: 画像
+      game_event_tags:
+        tag_name: タグ名

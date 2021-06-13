@@ -15,6 +15,30 @@
  *= require easy-autocomplete
 
  */
+.error-li{
+    color: rgb(235, 28, 28);
+    word-break: break-all;
+    margin-top: 10px;
+}
+.field_with_errors{
+    border: 1px solid rgb(235, 28, 28);
+}
+
+.error-box{
+    border: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px rgb(206, 206, 206);
+}
+.error-full-messages-box{
+    padding: 5px;
+}
+.error-found-text{
+    font-size: 22px;
+    padding-bottom: 10px;
+    color: rgb(235, 28, 28);
+}
 .flex{
     display: flex;
 }
@@ -79,8 +103,8 @@ button,input[type="submit"],input[type="button"],submit{
     transition: 0.3s ease background-color;
     border-style: none;
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgb(121, 121, 121);
 }

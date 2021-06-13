@@ -1,0 +1,10 @@
+<% if model.errors.present? %>
+    <div class="error-box">
+        <h2 class="error-found-text">エラーが見つかりました。</h2>
+        <div class="error-full-messages-box">
+            <% model.errors.full_messages.each do |error| %>
+                <li class="error-li"><%= error %></li>
+            <% end %>
+        </div>
+    </div>
+<% end %>

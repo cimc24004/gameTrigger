@@ -70,3 +70,4 @@ end
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'mini_magick', '~> 4.11'
 gem "rack-user_agent"
+gem 'rails-i18n'

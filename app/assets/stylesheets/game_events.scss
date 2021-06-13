@@ -10,6 +10,7 @@
     margin-bottom: 50px;
     margin-top: 30px;
 }
+
 .game_events_user_box{
     margin-top: 50px;
 }
@@ -195,6 +196,12 @@
     margin-bottom: 30px;
 }
 .game_event_new_box form .field .tag_name_form{
+    width: 70%;
+}
+.game_event_new_box form .field .field_with_errors .tag_name_form{
+    width: 100%;
+}
+.game_event_new_box form .field .field_with_errors{
     width: 70%;
 }
 #tag_name_form_add_button{

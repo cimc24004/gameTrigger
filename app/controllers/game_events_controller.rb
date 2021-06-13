@@ -36,7 +36,7 @@ class GameEventsController < ApplicationController
     def create
         @game_event = @game.game_events.build(game_event_params)
         @game_event.user_id = current_user.id
-        if @game_event.save!
+        if @game_event.save
             redirect_to @game
         else
             render 'new'

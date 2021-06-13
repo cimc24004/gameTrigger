@@ -15,6 +15,7 @@
         </div>
     <% end %>
     <%= form_with model: @game_event,url: url, local: true, class: "form",multipart: true do |f| %>
+        <%= render partial: "layouts/error", locals: {model: @game_event} %>
         <div class="field">
             <%= f.label "" do %>
                 ゲーム大会名
