@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                                   sessions: 'users/sessions'}
   get '/users/new'
   
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :create, :update] do
     collection do 
       get 'user_value_set' => 'users#user_value_set'
     end
