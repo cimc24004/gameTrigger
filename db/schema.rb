@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_000500) do
+ActiveRecord::Schema.define(version: 2021_06_13_013157) do
 
   create_table "game_event_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "tag_name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_000500) do
     t.string "image"
     t.string "google_file_id"
     t.string "google_file_url"
+    t.string "google_file_id_of_ogp"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
