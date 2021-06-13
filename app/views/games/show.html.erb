@@ -1,4 +1,4 @@
-<% content_for(:sub_title) { @game.title } %>
+<% content_for(:sub_title) { "#{@game.title}の大会一覧" } %>
 
 <div class="game-show-box">
     <% if @game.google_file_url.present? %>
