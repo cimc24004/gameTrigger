@@ -21,7 +21,7 @@
                 ゲーム大会名
                 <span class="important-text">(必須)</span>
             <% end %>
-            <%= f.text_field :title %>
+            <%= f.text_field :title, required: "required" %>
         </div>
         <div class="field">
             <%= f.label "ゲーム大会内容" %>

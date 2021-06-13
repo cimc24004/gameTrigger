@@ -2,7 +2,7 @@ ja:
   activerecord:
     models: 
       user: ユーザー
-      game_event: ゲーム大会情報
+      game_event: ゲーム大会
       game: ゲーム
       game_event_tags: タグ
     attributes: 
@@ -14,5 +14,6 @@ ja:
         title: タイトル
         event_master: 主催者
         image: 画像
+        body: ゲーム大会の内容
       game_event_tags:
         tag_name: タグ名

@@ -5,5 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.all.first
-user.update!(admin: true)
+if Rails.env.development?
+    p "------You are on development-----------------"
+    user = User.all.first
+    user.update!(admin: true)
+end
