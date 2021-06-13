@@ -6,6 +6,7 @@
         | <%= yield(:sub_title) %>  
       <% end %>
     </title>
+    <%= favicon_link_tag('favicon.ico') %>
     <% if content_for(:sub_title) %>
       <meta property="og:title" content="GameTrigger | <%= yield(:sub_title) %>" />
     <% else %>
