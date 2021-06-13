@@ -44,16 +44,18 @@ class GameEvent < ApplicationRecord
   
     def game_event_image_destroy_to_google_drive
         session = session_get()
-        if Rails.env.development?
-          upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                            .file_by_title("GameEventImageDevelopment")
-          
-        else
-          upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                            .file_by_title("GameEventImageProduction")
+        if image.present?
+          if Rails.env.development?
+            upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                              .file_by_title("GameEventImageDevelopment")
+            
+          else
+            upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                              .file_by_title("GameEventImageProduction")
+          end
+          session.drive_service.delete_file(google_file_id, supports_all_drives: true)
+          session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
         end
-        session.drive_service.delete_file(google_file_id, supports_all_drives: true)
-        session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
     end
     def check_tags_count(tag_count)
         if tag_count > 10
