@@ -71,3 +71,7 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'mini_magick', '~> 4.11'
 gem "rack-user_agent"
 gem 'rails-i18n'
+group :production, :staging do
+ # 以下追記
+ gem 'unicorn'
+end
