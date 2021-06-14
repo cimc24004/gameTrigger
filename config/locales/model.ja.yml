@@ -15,5 +15,6 @@ ja:
         event_master: 主催者
         image: 画像
         body: ゲーム大会の内容
+        game_id: ゲーム名
       game_event_tags:
         tag_name: タグ名

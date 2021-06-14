@@ -3,13 +3,14 @@
     <div class="game_event_show_title_box">
         <h1 class="game_event_show_title">大会情報を登録</h1>
     </div>
-    <%= form_with model: @game_event,url: game_game_events_path(game_id: @games.last.id),multipart: true ,class: "game_events_new_form", local: true do |f| %>
+    <%= form_with model: @game_event,url: game_events_path,multipart: true ,class: "game_events_new_form", local: true do |f| %>
+        <%= render partial: "layouts/error", locals: {model: @game_event} %>
         <div class="field">
             <%= f.label "" do %>
                 ゲーム名を選択
                 <span class="important-text">(必須)</span>
             <% end %>
-            <%= f.collection_select :game_id, @games, :id, :title, selected: nil,prompt: "選択してください", class: "select-game-id-form" %>
+            <%= f.collection_select :game_id, @games, :id, :title, selected: @default_value,prompt: "選択してください", class: "select-game-id-form" %>
         </div>
         <div class="field">
             <%= f.label "" do %>

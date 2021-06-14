@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post 'game_events' => 'game_events#create', as: "game_events"
     post 'image_uploads' => 'game_events#image_upload'
   end
+  post '/game_events' => 'game_events#game_events_create'
   get '/game_event_tags/autocomplete_tag_name'
   get "/search" => 'search#index'
   root 'games#index'

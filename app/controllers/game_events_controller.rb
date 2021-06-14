@@ -30,6 +30,7 @@ class GameEventsController < ApplicationController
     def game_events_new
         @game_event = GameEvent.new
         @games = Game.all.order(id: :desc)
+        @default_value = nil
     end
 
 
@@ -73,6 +74,24 @@ class GameEventsController < ApplicationController
         redirect_to @game
     end
 
+    def game_events_create
+        if params[:game_event][:game_id].blank?
+            @game_event = GameEvent.new(game_event_params)
+            @game_event.errors.add(:game_id, "を選択してください。")
+            @games = Game.all.order(id: :desc)
+            render 'game_events_new' and return
+        end
+        @game = Game.find params[:game_event][:game_id]
+        @game_event = @game.game_events.build(game_event_params)
+        @game_event.user_id = current_user.id
+        if @game_event.save
+            redirect_to @game
+        else
+            @games = Game.all.order(id: :desc)
+            @default_value = params[:game_event][:game_id]
+            render 'game_events_new'
+        end
+    end
     private
 
     def user_auth_check
