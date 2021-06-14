@@ -15,6 +15,12 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
+    def new
+        if user_signed_in?
+            redirect_to root_path and return
+        end
+    end
+
     private
 
     def user_find
