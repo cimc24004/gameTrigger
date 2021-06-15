@@ -47,6 +47,7 @@ class GamesController < ApplicationController
         keywards = params[:keywards]
         tag_game_event_ids = []
         master_game_event_ids = []
+        title_name_game_event_ids = []
         tag_ids = []
         if keywards.present?
             # 全角スペースは半角スペースに変換して半角スペースで配列を作る
@@ -58,9 +59,12 @@ class GamesController < ApplicationController
             keywards_sp.each do |keyward|
               tag_game_event_ids += GameEventTag.where('tag_name like ?', "#{keyward}%").pluck(:game_event_id)
               master_game_event_ids += @game.game_events.where("event_master like ?", "%#{keyward}%").pluck(:id)
+              title_name_game_event_ids += @game.game_events.where("title like ?", "%#{keyward}%").pluck(:id)
             end
+        else
+            title_name_game_event_ids = @game.game_events.pluck(:id)
         end
-        @game_events = @game.game_events.where("title like ?", "%#{keywards}%")
+        @game_events = @game.game_events.where(id: title_name_game_event_ids)
                         .or(@game.game_events.where(id: tag_game_event_ids))
                         .or(@game.game_events.where(id: master_game_event_ids))
                         .includes(:game_event_tags).page(params[:page]).per(10).order(created_at: :desc)
