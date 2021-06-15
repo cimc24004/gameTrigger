@@ -22,6 +22,8 @@ class SearchController < ApplicationController
         master_game_event_ids += @game.game_events.where("event_master like ?", "%#{keyward}%").pluck(:id)
         title_name_game_event_ids += @game.game_events.where("title like ?", "%#{keywards}%").pluck(:id)
       end
+    else
+      title_name_game_event_ids = @game.game_events.pluck(:id)
     end
 
     @game_events = @game.game_events.where(id: title_name_game_event_ids)
