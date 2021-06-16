@@ -1,4 +1,5 @@
 <% content_for(:sub_title) { "#{@user.name}が提供した大会情報一覧" } %>
+<%= render partial: "layouts/list", locals: {lists: @lists} %>
 <div class="game_event_edit_box user">
     <%= link_to  edit_user_registration_path, class: "text-decoration-none" do %>
         <span class="green-button edit-span-box">

@@ -1,0 +1,34 @@
+<!-- listは連想配列で lists {title, link}　という風にしています。
+
+  先頭から追加されていきます。
+ !-->
+ <div class="bread-lists-box">
+    <div class="bread-list-into-box">
+        <div class="bread-list-box">
+            <%= link_to root_path, class: "text-decoration-none hover-text-decoration blue" do %>
+                <div class="bread-list-into-box">
+                    <p>HOME</p>    
+                </div>
+            <% end %>
+        </div>
+
+        <% lists.each_with_index do |list, index| %>
+            <span class="left-mark-text">
+                >
+            </span>
+            <div class="bread-list-box">
+                <% if index + 1 != lists.count %>
+                    <%= link_to list["link"], class: "text-decoration-none hover-text-decoration blue"  do %>
+                        <div class="bread-list-into-box">
+                            <%= list["title"] %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <div class="bread-list-into-box">
+                        <%= list["title"] %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>

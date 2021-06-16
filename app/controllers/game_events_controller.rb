@@ -4,6 +4,7 @@ class GameEventsController < ApplicationController
     before_action :parent_game_find, only: [:create, :new, :show, :update, :destroy, :edit]
     before_action :game_event_find, only: [:show, :update, :destroy, :edit]
     before_action :user_auth_check, only: [:destroy, :update, :edit]
+    before_action :lists_receive
     def index
         # event_tags = []
         # keywards = params[:keywards]
@@ -20,14 +21,18 @@ class GameEventsController < ApplicationController
         @game_events = GameEvent.all.includes(:game, :game_event_tags)
                        .page(params[:page]).per(10).order(created_at: :desc)
         @games = Game.all.order(id: :desc)
-        
+        @lists.push("title" => "ゲーム大会一覧", "link" => "")
     end
 
     def new
+        @lists.push("title" => "#{@game.title}の大会一覧", "link" => "#{game_path(@game)}")
+        @lists.push("title" => "#{@game.title}の大会情報を登録", "link" => "")
+
         @game_event = @game.game_events.build
     end
 
     def game_events_new
+        @lists.push("title" => "大会情報を登録", "link" => "")
         @game_event = GameEvent.new
         @games = Game.all.order(id: :desc)
         @default_value = nil
@@ -45,9 +50,14 @@ class GameEventsController < ApplicationController
     end
 
     def edit
+        @lists.push("title" => "#{@game_event.game.title}の大会一覧", "link" => "#{game_path(@game)}")
+        @lists.push("title" => "#{@game_event.title}の大会情報", "link" => "#{game_event_path(id: @game_event.id, game_id: @game_event.game.id)}")
+        @lists.push("title" => "#{@game_event.title}の編集", "link" => "")
     end
 
     def show
+        @lists.push("title" => "#{@game_event.game.title}の大会一覧", "link" => "#{game_path(@game)}")
+        @lists.push("title" => "#{@game_event.title}の大会情報", "link" => "")
     end
 
     def update
@@ -89,6 +99,7 @@ class GameEventsController < ApplicationController
         else
             @games = Game.all.order(id: :desc)
             @default_value = params[:game_event][:game_id]
+            cookies[:search_game_id] = @default_value
             render 'game_events_new'
         end
     end
@@ -102,6 +113,10 @@ class GameEventsController < ApplicationController
         end
     end
 
+    def lists_receive
+        #[{"title" => "", "link" => ""]}
+        @lists = []
+    end
 
     def parent_game_find
         @game = Game.find params[:game_id]

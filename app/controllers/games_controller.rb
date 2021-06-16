@@ -2,6 +2,7 @@ class GamesController < ApplicationController
     before_action :authenticate_user!, only: [:create, :edit, :update, :new, :destroy]
     before_action :game_find, only: [:edit, :update, :show, :destroy]
     before_action :admin_check, only: [:edit,:update, :create, :destroy, :new]
+    before_action :lists_receive
     # before_action :user_auth_check, only: [:edit, :update, :destroy]
     def index
         @games = Game.all.includes(:game_events).order(id: :desc).page(params[:page]).per(12)
@@ -75,6 +76,7 @@ class GamesController < ApplicationController
                         .or(@game.game_events.where(id: tag_game_event_ids))
                         .or(@game.game_events.where(id: master_game_event_ids))
                         .includes(:game_event_tags).page(params[:page]).per(10).order(created_at: :desc)
+        @lists.push("title" => "#{@game.title}の大会一覧", "link" => "")
     end
 
     def destroy
@@ -97,7 +99,10 @@ class GamesController < ApplicationController
             redirect_to root_path and return
         end
     end
-
+    def lists_receive
+        #[{"title" => "", "link" => ""]}
+        @lists = []
+    end
     def admin_check
         unless current_user.admin
             redirect_to root_path and return

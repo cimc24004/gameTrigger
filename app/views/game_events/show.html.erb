@@ -10,7 +10,7 @@
     <% content_for(:meta_image) { "https://drive.google.com/uc?id=#{@game_event.game.google_file_id_of_ogp}" } %>
 <% end %>
 <div class="game_event_show_box"> 
-    
+    <%= render partial: "layouts/list", locals: {lists: @lists } %>
     <div class="game_event_show_title_box">
         <h1 class="game_event_show_title"><%= @game_event.title %></h1>
     </div>

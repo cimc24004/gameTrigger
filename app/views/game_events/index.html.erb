@@ -1,3 +1,4 @@
+<%= render partial: "layouts/list", locals: {lists: @lists} %>
 <div class="game_events_index_search_form_box">
     <%= render partial: "search/form", locals: {url: search_path, object: @games, default_value: @games.count} %>
 </div>

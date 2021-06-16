@@ -5,6 +5,7 @@
     <% url = url %>
 <% end %>
 <div class="game_event_new_box">
+    <%= render partial: "layouts/list", locals: {lists: @lists } %>
     <% unless defined?(edit_mode) %>
         <div class="game_event_show_title_box">
             <h1 class="game_event_show_title"><%= @game.title %>の大会情報を登録</h1>

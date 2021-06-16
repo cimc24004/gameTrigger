@@ -20,10 +20,30 @@
     word-break: break-all;
     margin-top: 10px;
 }
+.hover-text-decoration:hover{
+    text-decoration: underline;
+}
+.hover-text-decoration.blue:hover{
+}
+a.blue{
+    color: #497D9D;
+}
+.bread-lists-box{
+    display: inline-block;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+.bread-list-into-box{
+    display: flex;
+}
 .field_with_errors{
     border: 1px solid rgb(235, 28, 28);
 }
-
+.left-mark-text{
+    margin-left: 5px;
+    margin-right: 5px;
+}
 .error-box{
     border: 1px solid rgb(218, 218, 218);
     padding: 10px;

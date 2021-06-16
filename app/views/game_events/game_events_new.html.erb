@@ -1,5 +1,6 @@
 <% content_for(:sub_title) { "ゲーム大会情報を新しく作成" } %>
 <div class="game_event_new_box">
+    <%= render partial: "layouts/list", locals: {lists: @lists } %>
     <div class="game_event_show_title_box">
         <h1 class="game_event_show_title">大会情報を登録</h1>
     </div>

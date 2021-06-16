@@ -2,9 +2,11 @@ class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:show]
     before_action :user_find, only: [:show]
     before_action :user_auth_check, only: [:show]
+    before_action :lists_receive, only: [:show]
 
     def show
         @game_events = @user.game_events.includes(:user)
+        @lists.push("title" => "マイページ", "link" => "")
     end
 
     def user_value_set
@@ -22,6 +24,11 @@ class UsersController < ApplicationController
     end
 
     private
+
+    def lists_receive
+        #[{"title" => "", "link" => ""]}
+        @lists = []
+    end
 
     def user_find
         @user = User.find params[:id]

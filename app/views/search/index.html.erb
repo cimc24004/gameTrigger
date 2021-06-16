@@ -1,3 +1,4 @@
+<%= render partial: "layouts/list", locals: {lists: @lists} %>
 <h3 class="game-event-search-text">ゲーム大会の検索</h3>
 <%# if params[:default_value].present? %>
     <%= render 'form', {default_value: @game_id,object: @games, url: search_path}  %>

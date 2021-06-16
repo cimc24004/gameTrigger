@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :lists_receive
   def index
     event_tags = []
     keywards = params[:keywards]
@@ -7,7 +8,10 @@ class SearchController < ApplicationController
     title_name_game_event_ids = []
     @game_id = params[:game_id]
     if @game_id.blank?
-      @game_id = Game.all.first.id
+      @game_id = cookies[:search_game_id]
+      if cookies[:search_game_id].blank?
+        @game_id = Game.all.first.id
+      end
     end
     cookies[:search_game_id] = @game_id
     @games = Game.all.order(title: :asc)
@@ -30,7 +34,13 @@ class SearchController < ApplicationController
                    .or(@game.game_events.where(id: tag_game_event_ids))
                    .or(@game.game_events.where(id: master_game_event_ids))
                    .includes(:game_event_tags).page(params[:page]).per(10).order(created_at: :desc)
-    
+    @lists.push("title" => "ゲーム大会の検索", "link" => "")
   end
 
+
+  private
+
+  def lists_receive
+    @lists = []
+  end
 end
