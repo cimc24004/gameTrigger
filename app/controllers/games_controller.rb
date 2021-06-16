@@ -39,7 +39,7 @@ class GamesController < ApplicationController
                     @game.game_event_image_upload_to_google_drive
                 end
             end
-            redirect_to game_event_path(id: @game.id, game_id: @game.game.id)
+            redirect_to game_path(@game)
         else
             render 'edit'
         end
