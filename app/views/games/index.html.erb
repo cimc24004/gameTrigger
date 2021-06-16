@@ -24,13 +24,15 @@
     <% end %>
 </div>
 
-<%= render partial: "search/form", locals: {url: search_path, object: @games, default_value: 1} %>
+<%= render partial: "search/form", locals: {url: search_path, object: @games_search , default_value: @game_id} %>
 <div class="games-box">
     <div class="games-all-box">
         <%= render 'games' %>
     </div>
 </div>
-
+<div class="paginate-box">
+    <%= paginate @games %>
+</div>
 <style>
     .search-form-box{
         padding-bottom: 50px;

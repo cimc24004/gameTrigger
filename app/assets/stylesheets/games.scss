@@ -15,6 +15,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
 .more-append-game-events-box{
     margin: 0 0 0 auto;
     max-width: 100px;
@@ -92,6 +93,11 @@
 }
 .game-show-box{
     margin: 5px;
+}
+.games-all-box::after{
+    width: 320px;
+    max-width: 320px;
+    content: "";
 }
 @media screen and (max-width: 900px){
     .games-all-box{

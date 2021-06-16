@@ -4,7 +4,14 @@ class GamesController < ApplicationController
     before_action :admin_check, only: [:edit,:update, :create, :destroy, :new]
     # before_action :user_auth_check, only: [:edit, :update, :destroy]
     def index
-        @games = Game.all.includes(:game_events).order(id: :desc)
+        @games = Game.all.includes(:game_events).order(id: :desc).page(params[:page]).per(12)
+        @games_search = Game.all.order(title: :asc)
+        @game_id = nil
+        if cookies[:search_game_id].blank?
+            @game_id = @games_search.first.id
+        else
+            @game_id = cookies[:search_game_id]
+        end
         @game_events = GameEvent.all.includes(:game_event_tags).order(created_at: :desc).limit(5)
     end
     def new

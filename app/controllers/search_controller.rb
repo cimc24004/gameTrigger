@@ -5,14 +5,14 @@ class SearchController < ApplicationController
     tag_game_event_ids = []
     master_game_event_ids = []
     title_name_game_event_ids = []
-    game_id = params[:game_id]
-    if game_id.blank?
-      game_id = Game.all.first.id
+    @game_id = params[:game_id]
+    if @game_id.blank?
+      @game_id = Game.all.first.id
     end
-    cookies[:search_game_id] = game_id
-    @games = Game.all.order(id: :desc)
+    cookies[:search_game_id] = @game_id
+    @games = Game.all.order(title: :asc)
     @game_search_find = Game.find cookies[:search_game_id].to_i
-    @game = Game.find game_id.to_i
+    @game = Game.find @game_id.to_i
     if keywards.present?
       # 全角スペースは半角スペースに変換して半角スペースで配列を作る
       keywards_sp = keywards.gsub("　", " ").split(" ")

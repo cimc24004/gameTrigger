@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
     mount_uploader :image, FileUploader
-    has_many :game_events
+    has_many :game_events, dependent: :destroy
     belongs_to :user
     after_create_commit :image_upload_to_google_drive
     # after_update_commit :image_update_to_google_drive

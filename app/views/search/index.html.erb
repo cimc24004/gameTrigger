@@ -1,6 +1,6 @@
 <h3 class="game-event-search-text">ゲーム大会の検索</h3>
 <%# if params[:default_value].present? %>
-    <%= render 'form', {default_value: params[:game_id],object: @games, url: search_path}  %>
+    <%= render 'form', {default_value: @game_id,object: @games, url: search_path}  %>
 <%# else %>
     <%#= render 'form', {default_value: @games.count,object: @games, url: search_path}  %>
 <%# end %>
