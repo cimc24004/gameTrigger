@@ -10,9 +10,17 @@
     margin-bottom: 50px;
     margin-top: 30px;
 }
-
+.game-event-new-button-into-box h3{
+    word-break: break-all;
+}
 .game_events_user_box{
     margin-top: 50px;
+}
+.bread-list-into-box{
+    word-break: break-all;
+}
+.game_title_show{
+    word-break: break-all;
 }
 .admin-edit-and-delete-box{
     margin-bottom: 40px;
@@ -369,6 +377,7 @@
     padding-top: 10px; 
     background-color: #fff;
     margin-bottom: 30px;
+    word-break: break-all;
 }
 .game-event-list-tr td{
     border-left: 1px solid #ddd;

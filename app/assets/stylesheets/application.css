@@ -33,6 +33,7 @@ a.blue{
     background-color: #fff;
     margin-bottom: 10px;
     padding: 8px;
+    font-size: 15px;
 }
 .bread-list-into-box{
     display: flex;

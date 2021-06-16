@@ -76,7 +76,7 @@ class GamesController < ApplicationController
                         .or(@game.game_events.where(id: tag_game_event_ids))
                         .or(@game.game_events.where(id: master_game_event_ids))
                         .includes(:game_event_tags).page(params[:page]).per(10).order(created_at: :desc)
-        @lists.push("title" => "#{@game.title}の大会一覧", "link" => "")
+        @lists.push("title" => "#{@game.title.truncate(10)}の大会一覧", "link" => "")
     end
 
     def destroy
