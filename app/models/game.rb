@@ -35,17 +35,19 @@ class Game < ApplicationRecord
     end
     
     def image_destroy_to_google_drive
-        session = session_get()
-        if Rails.env.development?
-          upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                             .file_by_title("GameDevelopmentImage")
-          
-        else
-          upload_to_folder = session.file_by_title("GameTriggerUploaders")
-                             .file_by_title("GameProductionImage")
+        if image.present?
+            session = session_get()
+            if Rails.env.development?
+            upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                                .file_by_title("GameDevelopmentImage")
+            
+            else
+            upload_to_folder = session.file_by_title("GameTriggerUploaders")
+                                .file_by_title("GameProductionImage")
+            end
+            session.drive_service.delete_file(google_file_id, supports_all_drives: true)
+            session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
         end
-        session.drive_service.delete_file(google_file_id, supports_all_drives: true)
-        session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
     end
 
     private

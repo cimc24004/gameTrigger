@@ -9,7 +9,9 @@ class GamesController < ApplicationController
         @games_search = Game.all.order(title: :asc)
         @game_id = nil
         if cookies[:search_game_id].blank?
-            @game_id = @games_search.first.id
+            if @games_search.exists?
+                @game_id = @games_search.first.id
+            end
         else
             @game_id = cookies[:search_game_id]
         end
