@@ -16,6 +16,7 @@
 .game_events_user_box{
     margin-top: 50px;
 }
+
 .bread-list-into-box{
     word-break: break-all;
 }
@@ -191,7 +192,11 @@
         display: inline-block;
         margin-bottom: 15px;
     }
-} 
+}
+.game_event_show_master_box{
+    display: flex;
+
+}
 .game_event_new_box form{
     max-width: 650px;
 }
@@ -347,6 +352,8 @@
     border-radius: 10px;
     color: #fff;
     margin-right: 10px;
+    width: 125px;
+    height: 20px;
 }
 
 .green-button.edit-span-box{
@@ -446,6 +453,7 @@ ol{
 }
 .game-title-td{
     width: 25%;
+    word-break: break-all;
 }
 .game-event-title-td{
     width: 35%;
@@ -462,6 +470,10 @@ ol{
 @media screen and (max-width: 500px){
     .game-event-list-tr td{
         font-size: 14px;
+    }
+
+    .event_master_text{
+        max-width: 200px;
     }
     .game_events_of_user_text{
         text-align: center;
@@ -487,5 +499,8 @@ ol{
     }
     .game-detail-td{
         width: 20%;
+    }
+    .sub-title-text-show{
+        width: auto;
     }
 }
