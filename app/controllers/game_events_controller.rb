@@ -52,7 +52,7 @@ class GameEventsController < ApplicationController
     def edit
         @lists.push("title" => "#{@game_event.game.title.truncate(10)}の大会一覧", "link" => "#{game_path(@game)}")
         @lists.push("title" => "#{@game_event.title.truncate(10)}の大会情報", "link" => "#{game_event_path(id: @game_event.id, game_id: @game_event.game.id)}")
-        @lists.push("title" => "#{@game_event.title}の編集", "link" => "")
+        @lists.push("title" => "#{@game_event.title.truncate(10)}の編集", "link" => "")
     end
 
     def show
