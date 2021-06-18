@@ -197,6 +197,11 @@
     display: flex;
 
 }
+.game_event_show_master_box{
+    .sub-title-text-show{
+        margin-right: 0;
+    }
+}
 .game_event_new_box form{
     max-width: 650px;
 }
