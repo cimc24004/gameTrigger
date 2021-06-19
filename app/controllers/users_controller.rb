@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     before_action :lists_receive, only: [:show]
 
     def show
-        @game_events = @user.game_events.includes(:user)
+        @game_events = @user.game_events.includes(:user).page(params[:page]).per(10).order(created_at: :desc)
         @lists.push("title" => "マイページ", "link" => "")
     end
 
