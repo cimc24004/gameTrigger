@@ -85,17 +85,19 @@
 
         <div class="game_event_body_box">
             <% @game_event.game_event_ogps.each do |game_event_ogp| %>
-                <div class="game-event-ogp-out-box">
-                    <%= link_to game_event_ogp.ogp_url,target: "_blank", class: "text-decoration-none ogp-link" do %>
-                        <div class="game-event-ogp-into-box">
-                            <% if game_event_ogp.ogp_google_file_id.present? %>
-                                <%= image_tag "https://drive.google.com/uc?id=#{game_event_ogp.ogp_google_file_id}",class: "ogp-image-game-event" %>
-                            <% end %>
-                            <h2 class="game_event_ogp_title"><%= game_event_ogp.ogp_title %></h2>
-                            <p><%= game_event_ogp.ogp_body %></p>
-                        </div>
-                    <% end %>
-                </div>
+                <% if game_event_ogp.ogp_url.present? %>
+                    <div class="game-event-ogp-out-box">
+                        <%= link_to game_event_ogp.ogp_url,target: "_blank", class: "text-decoration-none ogp-link" do %>
+                            <div class="game-event-ogp-into-box">
+                                <% if game_event_ogp.ogp_google_file_id.present? %>
+                                    <%= image_tag "https://drive.google.com/uc?id=#{game_event_ogp.ogp_google_file_id}",class: "ogp-image-game-event" %>
+                                <% end %>
+                                <h2 class="game_event_ogp_title"><%= game_event_ogp.ogp_title %></h2>
+                                <p><%= game_event_ogp.ogp_body %></p>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
             <% end %>
 			<%= raw Rinku.auto_link(simple_format(h(game_event_body_strip(@game_event.body)), class: "game_event_body_text"), :all,'target="_blank"') %>
         </div>

@@ -102,10 +102,12 @@ class GameEventsController < ApplicationController
         @game = Game.find params[:game_event][:game_id]
         @game_event = @game.game_events.build(game_event_params)
         @game_event.user_id = current_user.id
-        urls = URI.extract(@game_event.body)
-        if urls.blank?
-            @game_event.game_event.build(ogp_url: urls[0])
+        url = URI.extract(@game_event.body)[0]
+        if url.blank?
+            url = nil
         end
+        @game_event.game_event_ogps.build(ogp_url: url)
+
         if @game_event.save
             redirect_to @game
         else
