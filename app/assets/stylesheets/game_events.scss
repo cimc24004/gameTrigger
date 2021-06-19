@@ -20,6 +20,40 @@
 .bread-list-into-box{
     word-break: break-all;
 }
+.ogp-link{
+    color: #000; 
+}
+.game-event-ogp-out-box{
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+.game_event_ogp_title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.game-event-ogp-into-box{
+    border: 1px solid rgb(153, 153, 153);
+    padding: 10px;
+    border-radius: 15px;
+    color: #404040;
+}
+.ogp-link:hover{
+    .game-event-ogp-into-box{
+        opacity: 0.8;
+    }
+}
+.game_event_body_text a{
+    color: #497D9D;
+    text-decoration: none;
+}
+.ogp-image-game-event{
+    width: 100%;
+}
+
+.game_event_body_text a:hover{
+    text-decoration: underline;
+}
 .game_title_show{
     word-break: break-all;
 }

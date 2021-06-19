@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_104605) do
+ActiveRecord::Schema.define(version: 2021_06_19_012540) do
+
+  create_table "game_event_ogps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ogp_url"
+    t.string "ogp_google_file_id"
+    t.string "ogp_title"
+    t.text "ogp_body"
+    t.bigint "game_event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_event_id"], name: "index_game_event_ogps_on_game_event_id"
+  end
 
   create_table "game_event_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "tag_name"

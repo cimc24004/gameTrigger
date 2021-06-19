@@ -42,6 +42,11 @@ class GameEventsController < ApplicationController
     def create
         @game_event = @game.game_events.build(game_event_params)
         @game_event.user_id = current_user.id
+        url = URI.extract(@game_event.body)[0]
+        if url.blank?
+            url = nil
+        end
+        @game_event.game_event_ogps.build(ogp_url: url)
         if @game_event.save
             redirect_to @game
         else
@@ -65,7 +70,10 @@ class GameEventsController < ApplicationController
         if @game_event.google_file_id.present?
             image_upload = true
         end
+        
         if @game_event.update(game_event_update_params)
+            urls = URI.extract(@game_event.body)
+            @game_event.game_event_ogps[0].update(ogp_url: urls[0])
             if @game_event.image.present?
                 if image_upload
                     @game_event.game_event_image_update_to_google_drive
@@ -94,6 +102,10 @@ class GameEventsController < ApplicationController
         @game = Game.find params[:game_event][:game_id]
         @game_event = @game.game_events.build(game_event_params)
         @game_event.user_id = current_user.id
+        urls = URI.extract(@game_event.body)
+        if urls.blank?
+            @game_event.game_event.build(ogp_url: urls[0])
+        end
         if @game_event.save
             redirect_to @game
         else
@@ -129,7 +141,7 @@ class GameEventsController < ApplicationController
 
     def game_event_update_params
         params.require(:game_event).permit(:title,:file_url, :body,:image, :event_date, :twitter_render,:image_cache, :event_master,
-            game_event_tags_attributes: [:id, :tag_name, :_destroy, :game_event_id])
+            game_event_tags_attributes: [:id, :tag_name, :_destroy, :game_event_id], game_event_ogps: [:id, :_destroy])
     end
 
 

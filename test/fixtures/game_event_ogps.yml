@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ogp_url: MyString
+  ogp_google_file_id: MyString
+  ogp_title: MyString
+  ogp_body: MyText
+
+two:
+  ogp_url: MyString
+  ogp_google_file_id: MyString
+  ogp_title: MyString
+  ogp_body: MyText

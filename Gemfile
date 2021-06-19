@@ -68,6 +68,7 @@ gem 'google_drive', '~> 3.0', '>= 3.0.7'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-twitter', '~> 1.0'
+gem 'nokogiri'
 group :production do
   gem 'pg'
 end
@@ -79,3 +80,5 @@ group :production, :staging do
  # 以下追記
  gem 'unicorn'
 end
+gem "opengraph_parser"
+gem 'rinku'

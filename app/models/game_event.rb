@@ -5,6 +5,7 @@ class GameEvent < ApplicationRecord
     validates :title, presence: true
     validates :event_master, presence: true
     has_many :game_event_tags, dependent: :destroy
+    has_many :game_event_ogps, dependent: :destroy
     validates_length_of :game_event_tags, maximum: 10
     accepts_nested_attributes_for :game_event_tags, allow_destroy: true
     after_create_commit :game_event_image_upload_to_google_drive
@@ -55,22 +56,6 @@ class GameEvent < ApplicationRecord
           end
           session.drive_service.delete_file(google_file_id, supports_all_drives: true)
           session.drive_service.delete_file(google_file_id_of_ogp, supports_all_drives: true)
-        end
-    end
-    def check_tags_count(tag_count)
-        if tag_count > 10
-            errors.add(:game_event, "タグの数は10個までです。")
-            return false;
-        else
-            return true;
-        end
-    end
-    def check_images_count(image_count)
-        if image_count > 10
-            errors.add(:image_count, "画像の数は5つまでです。")
-            return false;
-        else
-            return true;
         end
     end
 
