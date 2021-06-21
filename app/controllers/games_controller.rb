@@ -36,9 +36,9 @@ class GamesController < ApplicationController
         if @game.update(game_params)
             if @game.image.present?
                 if image_upload
-                    @game.game_event_image_update_to_google_drive
+                    @game.image_update_to_google_drive
                 else
-                    @game.game_event_image_upload_to_google_drive
+                    @game.image_upload_to_google_drive
                 end
             end
         else
