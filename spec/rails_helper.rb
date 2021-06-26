@@ -30,9 +30,12 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+OmniAuth.config.test_mode = true
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include ActiveSupport::Testing::TimeHelpers
+OmniAuth.config.test_mode = true
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -40,6 +43,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include Rails.application.routes.url_helpers
   config.include Devise::Test::IntegrationHelpers, type: :request #sign_inヘルパーを提供してくれます
+  config.include Devise::Test::IntegrationHelpers, type: :model #sign_inヘルパーを提供してくれます
   config.include FactoryBot::Syntax::Methods #ついでにFactoryBotもincludeしておきます
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

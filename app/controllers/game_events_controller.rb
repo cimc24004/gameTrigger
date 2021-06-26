@@ -42,7 +42,9 @@ class GameEventsController < ApplicationController
     def create
         @game_event = @game.game_events.build(game_event_params)
         @game_event.user_id = current_user.id
-        url = URI.extract(@game_event.body)[0]
+        if @game_event.body.present?
+            url = URI.extract(@game_event.body)[0]
+        end
         if url.blank?
             url = nil
         end
@@ -72,8 +74,12 @@ class GameEventsController < ApplicationController
         end
         
         if @game_event.update(game_event_update_params)
-            urls = URI.extract(@game_event.body)
-            @game_event.game_event_ogps[0].update(ogp_url: urls[0])
+            if @game_event.body.present?
+                urls = URI.extract(@game_event.body)
+            end
+            if @game_event.game_event_ogps.exists?
+                @game_event.game_event_ogps[0].update(ogp_url: urls[0])
+            end
             if @game_event.image.present?
                 if image_upload
                     @game_event.game_event_image_update_to_google_drive

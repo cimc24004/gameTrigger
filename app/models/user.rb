@@ -24,6 +24,10 @@ class User < ApplicationRecord
     end
   end
 
+  def remember_me
+    true
+  end
+
   def self.dummy_email_create(provider, uid)
     return "#{provider}-#{uid}@email.com"
   end
