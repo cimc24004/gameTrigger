@@ -16,9 +16,9 @@
     <% end %>
   <% else %>
       <%= link_to url, {remote: remote, rel: page.rel, class: "page-link"} do %>
-      <span class="page<%= ' current' if page.current? %>">
-        <%= page %>
-      </span>
+        <span class="page<%= ' current' if page.current? %>">
+          <%= page %>
+        </span>
     <% end %>
   <% end %>
 </div>
