@@ -76,9 +76,18 @@ class GameEventsController < ApplicationController
         if @game_event.update(game_event_update_params)
             if @game_event.body.present?
                 urls = URI.extract(@game_event.body)
+            else
+                @game_event.game_event_ogps.destroy_all
             end
-            if @game_event.game_event_ogps.exists?
-                @game_event.game_event_ogps[0].update(ogp_url: urls[0])
+            if urls.present?
+                url = urls[0]
+            end
+            if url.present?
+                if @game_event.game_event_ogps.exists?
+                    @game_event.game_event_ogps[0].update(ogp_url: url)
+                else
+                    @game_event.game_event_ogps.create(ogp_url: url)
+                end
             end
             if @game_event.image.present?
                 if image_upload
