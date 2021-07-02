@@ -6,7 +6,7 @@ class GameEventOgp < ApplicationRecord
 
     def ogp_save_google
         if ogp_url.present?
-            og = OpenGraph.new(ogp_url, false)
+            og = OpenGraph.new(URI.encode(ogp_url), false)
             unless og.images.empty?
                 unless File.exists?("public/uploads/ogp-images")
                     FileUtils.mkdir_p("public/uploads/ogp-images")
@@ -24,7 +24,7 @@ class GameEventOgp < ApplicationRecord
     def ogp_update_google
         if saved_change_to_ogp_url?
           if ogp_url.present?
-            og = OpenGraph.new(ogp_url, false)
+            og = OpenGraph.new(URI.encode(ogp_url), false)
             if ogp_google_file_id.present? && og.images.present?
                 session = session_get()
                 file = open(og.images[0])
