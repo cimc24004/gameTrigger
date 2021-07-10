@@ -16,7 +16,7 @@
     </div>
     <div class="game_event_show_master_box sub-title-box">
         <span class="sub-title-text-show">主催者</span>
-        <p class="event_master_text"><%= @game_event.event_master %></p>
+        <p class="event_master_text"><%= link_to @game_event.event_master, game_path(id: @game_event.game.id, keywards: "#{@game_event.event_master}"), class: "text-decoration-none hover blue hover-text-decoration" %></p>
     </div>
     <div class="game_event_show_date_box sub-title-box">
         <p>
