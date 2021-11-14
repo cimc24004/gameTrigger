@@ -10,7 +10,20 @@
     margin-bottom: 50px;
     margin-top: 30px;
 }
-
+.markdown-editor{
+    background-color: #fff;
+    padding: 10px;
+}
+.game_event_sentence_show_box a{
+    color: #497D9D;
+    text-decoration: none;
+}
+#game_event_body{
+    width: 50%;
+}
+.preview-game-events-body{
+    width: 50%;
+}
 .game-event-new-button-into-box h3{
     word-break: break-all;
 }

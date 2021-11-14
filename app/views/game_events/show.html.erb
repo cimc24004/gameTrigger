@@ -99,7 +99,7 @@
                     </div>
                 <% end %>
             <% end %>
-			<%= raw Rinku.auto_link(simple_format(h(game_event_body_strip(@game_event.body)), class: "game_event_body_text"), :all,'target="_blank"') %>
+			<%= raw Rinku.auto_link(simple_format(h(game_event_body_strip(markdown(@game_event.body))), class: "game_event_body_text"), :all,'target="_blank"') %>
         </div>
     </div>
 </div>

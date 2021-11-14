@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   get "/search" => 'search#index'
   root 'games#index'
   get "/game_events/new" => 'game_events#game_events_new'
+  namespace :api, format: "json" do
+    get "game_events/preview"
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

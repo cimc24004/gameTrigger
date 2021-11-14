@@ -1,4 +1,7 @@
 //= require nested_fields
+//= require simplemde/dist/simplemde.min.js
+
+
 $(function(){
     var click_menu = false;
     $('.smartphone-menu-button').click(function(){

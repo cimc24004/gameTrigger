@@ -26,7 +26,31 @@
         </div>
         <div class="field">
             <%= f.label "ゲーム大会内容" %>
-            <%= f.text_area :body, id: "game_event_body" %>
+            <div class="markdown-editor">
+                <%= f.text_area :body, id: "game_event_body" %>
+            </div>
+            <!--
+            <div class="game_event_body_and_preview_game_events_body">
+                <div class="modal" id="modal-preview">
+                    <div class="modal-background" id="modal-background-preview"></div>
+                    <div class="modal-contents">
+                        <div class="modal-close-box" id="modal-preview-close">
+                            <%= image_tag "batsu_icon.png" %>
+                        </div>
+                        <div class="preview-game-events-body" id="preview-body">
+                             プレビュー 
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div>
+                <button class="preview-button blue-button" id="preview-button" type="button">プレビュー</button>
+            </div>
+            !-->
+            
         </div>
         <div class="field">
             <% if defined?(edit_mode) %>
@@ -96,7 +120,7 @@
                 </div>
             <% end %>
         </div>
-
+        
         <div class="field">
             <%= f.label "" do %>
                 ゲーム大会主催者
@@ -148,7 +172,32 @@
             <%= f.submit "送信", class: "submit-form" %>
         </div>
 
+
         <script>
+
+            let game_event_body = $(`#game_event_body`).val();
+            let simplemde = new SimpleMDE({element: $get_id("game_event_body")})
+            $(`#game_event_body`).on('change', function(event){
+                $.ajax({
+                    url: '/api/game_events/preview',
+                    dataType: 'json',
+                    type: 'GET',
+                    data: {body: event.target.value}
+                })
+                .done(function(html){
+                    $(`#preview-body`).html(html.body);
+                });
+            });
+            $(`#modal-preview-close`).click(function(){
+                $(`#modal-preview`).removeClass("dis");
+            });
+            $(`#preview-button`).click(function(){
+                $(`#modal-preview`).addClass("dis");
+            });
+            $(`#modal-background-preview`).click(function(){
+                $(`#modal-preview`).removeClass("dis");
+            });
+
             $(document).ready( function(){
                 var id = 0;
                 var save_record_id = [];

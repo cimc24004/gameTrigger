@@ -5,6 +5,7 @@ class GameEventsController < ApplicationController
     before_action :game_event_find, only: [:show, :update, :destroy, :edit]
     before_action :user_auth_check, only: [:destroy, :update, :edit]
     before_action :lists_receive
+    require "./app/service/url_mine.rb"
     def index
         # event_tags = []
         # keywards = params[:keywards]
@@ -72,7 +73,6 @@ class GameEventsController < ApplicationController
         if @game_event.google_file_id.present?
             image_upload = true
         end
-        
         if @game_event.update(game_event_update_params)
             if @game_event.body.present?
                 urls = URI.extract(@game_event.body)

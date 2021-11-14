@@ -12,12 +12,17 @@
     <script data-ad-client="ca-pub-9960952664865412" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9960952664865412"
      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+    
     <title>GameTrigger
       <% if content_for?(:sub_title) %>
         | <%= yield(:sub_title) %>  
       <% end %>
     </title>
     <%= favicon_link_tag('favicon.ico') %>
+
     <% if content_for(:sub_title) %>
       <meta property="og:title" content="GameTrigger | <%= yield(:sub_title) %>" />
     <% else %>

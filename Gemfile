@@ -82,3 +82,4 @@ group :production, :staging do
 end
 gem "opengraph_parser"
 gem 'rinku'
+gem 'redcarpet'

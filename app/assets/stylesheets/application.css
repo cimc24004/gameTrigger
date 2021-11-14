@@ -13,13 +13,70 @@
  *= require_tree .
  *= require_self
  *= require easy-autocomplete
-
+ *= require simplemde
  */
 .error-li{
     color: rgb(235, 28, 28);
     word-break: break-all;
     margin-top: 10px;
 }
+.fa.fa-picture-o{
+    display: none;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: 0.3s opacity ease;
+    opacity: 0;
+    display: none;
+    z-index: 1000;
+}
+.modal-close-box{
+    position: absolute;
+    right: 20px;
+
+    cursor: pointer;
+}
+.modal-background{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    /* top: 0; */
+    /* left: 0; */
+    background-color: rgba(0,0,0,0.7);
+
+}
+.modal.dis{
+    opacity: 1;
+    display: block;
+}
+.modal.hide{
+    opacity: 0;
+    display: none;
+}
+body.scroll-not-permit{
+    overflow-y: hidden;
+    position: fixed;
+}
+.modal-contents{
+    position: absolute;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 90%;
+    height: 80%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1500;
+    padding: 20px;
+}
+
+
 .hover-text-decoration:hover{
     text-decoration: underline;
 }
@@ -206,8 +263,14 @@ button,input[type="submit"],input[type="button"],submit{
 .desktop-nav a{
     margin-right: 20px;
 }
+
 .top-link.end{
     margin-right: 0;
+}
+
+
+.game_event_sentence_show_box a:hover{
+    text-decoration: underline;
 }
 .top-link{
     margin-right: 20px;
