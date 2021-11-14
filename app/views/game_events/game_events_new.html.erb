@@ -22,7 +22,9 @@
         </div>
         <div class="field">
             <%= f.label "ゲーム大会内容" %>
-            <%= f.text_area :body, id: "game_event_body" %>
+            <div class="markdown-editor">
+                <%= f.text_area :body, id: "game_event_body" %>
+            </div>
         </div>
         <div class="field">
             <% if defined?(edit_mode) %>
@@ -102,6 +104,8 @@
                 $(`#image-select-button`).click(function(e){
                     $get_id(`image-file-input-0`).click();
                 });
+                let simplemde = new SimpleMDE({element: $get_id("game_event_body")})
+
                 $(`#image-file-input-0`).change(function(e){
                     var file = e.target.files[0];
                     if(!file.type.match(/image/)){

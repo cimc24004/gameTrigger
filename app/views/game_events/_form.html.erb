@@ -177,26 +177,26 @@
 
             let game_event_body = $(`#game_event_body`).val();
             let simplemde = new SimpleMDE({element: $get_id("game_event_body")})
-            $(`#game_event_body`).on('change', function(event){
-                $.ajax({
-                    url: '/api/game_events/preview',
-                    dataType: 'json',
-                    type: 'GET',
-                    data: {body: event.target.value}
-                })
-                .done(function(html){
-                    $(`#preview-body`).html(html.body);
-                });
-            });
-            $(`#modal-preview-close`).click(function(){
-                $(`#modal-preview`).removeClass("dis");
-            });
-            $(`#preview-button`).click(function(){
-                $(`#modal-preview`).addClass("dis");
-            });
-            $(`#modal-background-preview`).click(function(){
-                $(`#modal-preview`).removeClass("dis");
-            });
+            // $(`#game_event_body`).on('change', function(event){
+            //     $.ajax({
+            //         url: '/api/game_events/preview',
+            //         dataType: 'json',
+            //         type: 'GET',
+            //         data: {body: event.target.value}
+            //     })
+            //     .done(function(html){
+            //         $(`#preview-body`).html(html.body);
+            //     });
+            // });
+            // $(`#modal-preview-close`).click(function(){
+            //     $(`#modal-preview`).removeClass("dis");
+            // });
+            // $(`#preview-button`).click(function(){
+            //     $(`#modal-preview`).addClass("dis");
+            // });
+            // $(`#modal-background-preview`).click(function(){
+            //     $(`#modal-preview`).removeClass("dis");
+            // });
 
             $(document).ready( function(){
                 var id = 0;
